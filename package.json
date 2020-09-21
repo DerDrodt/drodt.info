@@ -9,7 +9,8 @@
     "start": "node __sapper__/build",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
-    "test": "run-p --race dev cy:run"
+    "test": "run-p --race dev cy:run",
+    "tar": "cd __sapper__/export && tar -cvzf export.tar.gz . && cd ../.."
   },
   "dependencies": {
     "@sindresorhus/slugify": "^1.1.0",
