@@ -10,4 +10,5 @@ export interface Metadata {
   title: string;
   description: string;
   tags: string[];
+  lang: string;
 }

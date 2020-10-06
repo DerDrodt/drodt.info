@@ -3,7 +3,7 @@ import path from "path";
 import md from "markdown-it";
 import footNote from "markdown-it-footnote";
 import anchor from "markdown-it-anchor";
-import { extractFrontmatter, linkRenderer } from "../../util/markdown";
+import { extractFrontmatter } from "../../util/markdown";
 import { makeSlugProcessor } from "../../util/slug";
 import { SLUG_PRESERVE_UNICODE } from "../../../config";
 import type { Post } from "../../types/post";
@@ -30,8 +30,14 @@ export default function getPosts(): Post[] {
       metadata.dateString = date.toDateString();
       const tagString = (metadata.tags as unknown) as string;
       metadata.tags = tagString.split(", ");
+      metadata.lang = metadata.lang ?? "en";
 
-      const renderer = md()
+      const quotes = metadata.lang === "de" ? `„“‚‘` : `“”‘’`;
+
+      const renderer = md({
+        typographer: true,
+        quotes,
+      })
         .use(footNote)
         .use(anchor, {
           permalink: true,

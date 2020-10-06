@@ -17,6 +17,12 @@
   import type { Post } from "../../types/post";
 
   export let post: Post;
+
+  function updateLang(lang: string) {
+    if (process.browser) document?.documentElement.setAttribute("lang", lang);
+  }
+
+  updateLang(post.metadata.lang);
 </script>
 
 <style>

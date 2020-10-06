@@ -17,7 +17,9 @@
     "@tsconfig/svelte": "^1.0.10",
     "@types/node": "^14.6.2",
     "compression": "^1.7.1",
-    "marked": "^1.1.1",
+    "markdown-it": "^11.0.1",
+    "markdown-it-anchor": "^6.0.0",
+    "markdown-it-footnote": "^3.0.2",
     "polka": "next",
     "rollup-plugin-typescript2": "^0.27.2",
     "sirv": "^1.0.0"

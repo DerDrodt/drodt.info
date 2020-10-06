@@ -45,6 +45,19 @@ code {
   text-decoration: none;
 }
 
+.header-anchor {
+  position: absolute;
+  left: 24px;
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+.header-anchor:hover,
+:hover > .header-anchor {
+  opacity: 1;
+}
+
 @media (min-width: 400px) {
   body {
     font-size: 16px;
