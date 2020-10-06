@@ -1,6 +1,8 @@
 import fs from "fs";
 import path from "path";
-import marked from "marked";
+import md from "markdown-it";
+import footNote from "markdown-it-footnote";
+import anchor from "markdown-it-anchor";
 import { extractFrontmatter, linkRenderer } from "../../util/markdown";
 import { makeSlugProcessor } from "../../util/slug";
 import { SLUG_PRESERVE_UNICODE } from "../../../config";
@@ -29,24 +31,17 @@ export default function getPosts(): Post[] {
       const tagString = (metadata.tags as unknown) as string;
       metadata.tags = tagString.split(", ");
 
-      const renderer = new marked.Renderer();
+      const renderer = md()
+        .use(footNote)
+        .use(anchor, {
+          permalink: true,
+          permalinkBefore: false,
+          permalinkSymbol: "🔗",
+          permalinkHref: (fragment) => `blog/${slug}#${fragment}`,
+        });
 
-      renderer.link = linkRenderer;
-
-      renderer.heading = (text, level, rawtext) => {
-        const fragment = makeSlug(rawtext);
-
-        return `
-					<h${level}>
-						<span id="${fragment}" class="offset-anchor"></span>
-						<a href="blog/${slug}#${fragment}" class="anchor" aria-hidden="true"></a>
-						${text}
-					</h${level}>`;
-      };
-
-      const html: string = marked(
+      const html: string = renderer.render(
         content.replace(/^\t+/gm, (match) => match.split("\t").join("  ")),
-        { renderer },
       );
 
       return {
