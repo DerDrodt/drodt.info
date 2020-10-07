@@ -16,6 +16,7 @@
 </script>
 
 <script lang="ts">
+  import Tag from "../../components/Tag.svelte";
   import type { Post } from "../../types/post";
 
   export let post: Post;
@@ -46,8 +47,8 @@
   }
 
   .byline {
-    margin: 0 0 6rem 0;
-    padding: 1.6rem 0 0 0;
+    margin: 0 0 2rem 0;
+    padding: 0;
     border-top: var(--border-w) solid #6767785b;
     font-size: var(--h6);
     text-transform: uppercase;
@@ -57,6 +58,10 @@
     color: var(--second);
     max-width: 20em;
     margin: 0 0 0.8rem 0;
+  }
+
+  .tags {
+    margin: 0;
   }
 </style>
 
@@ -69,6 +74,11 @@
 </svelte:head>
 
 <article class="post listify">
+  <p class="tags">
+    {#each post.metadata.tags as tag}
+      <Tag name={tag} />
+    {/each}
+  </p>
   <h1>{post.metadata.title}</h1>
   <p class="standfirst">{post.metadata.description}</p>
 

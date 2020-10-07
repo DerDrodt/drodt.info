@@ -28,7 +28,7 @@
   }
   h2 {
     display: inline-block;
-    margin: 3.2rem 0 0.4rem 0;
+    margin: 1rem 0 0.4rem 0;
     color: var(--text);
     max-width: 18em;
     font-size: var(--h3);
@@ -36,11 +36,11 @@
   }
   .post:first-child {
     margin: 0 0 2rem 0;
-    padding: 0 0 4rem 0;
+    padding: 0 0 1rem 0;
     border-bottom: var(--border-w) solid #6767785b; /* based on --second */
   }
   .post:first-child h2 {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 400;
     color: var(--second);
   }
@@ -68,6 +68,14 @@
   .posts a:hover > h2 {
     color: var(--flash);
   }
+
+  .tags {
+    margin: 0;
+  }
+
+  .current-tag {
+    padding: 0 var(--side-nav);
+  }
 </style>
 
 <svelte:head>
@@ -78,12 +86,8 @@
   <meta name="Description" content="Articles by Daniel Drodt" />
 </svelte:head>
 
-<h1>Recent posts</h1>
-
-<a href="./#f">Text</a>
-
 {#if tag !== undefined}
-  <p>
+  <p class="current-tag">
     Showing all articles for
     <Tag name={tag} />
     <a href="/blog">Show all</a>
