@@ -4,9 +4,9 @@ import commonjs from "@rollup/plugin-commonjs";
 import svelte from "rollup-plugin-svelte";
 import babel from "@rollup/plugin-babel";
 import { terser } from "rollup-plugin-terser";
+import sveltePreprocess from "svelte-preprocess";
+import typescript from "@rollup/plugin-typescript";
 import config from "sapper/config/rollup.js";
-import autoPreprocess from "svelte-preprocess";
-import ts from "rollup-plugin-typescript2";
 import pkg from "./package.json";
 
 const mode = process.env.NODE_ENV;
@@ -17,11 +17,12 @@ const onwarn = (warning, onwarn) =>
   (warning.code === "MISSING_EXPORT" && /'preload'/.test(warning.message)) ||
   (warning.code === "CIRCULAR_DEPENDENCY" &&
     /[/\\]@sapper[/\\]/.test(warning.message)) ||
+  warning.code === "THIS_IS_UNDEFINED" ||
   onwarn(warning);
 
 export default {
   client: {
-    input: config.client.input(),
+    input: config.client.input().replace(/.js$/, ".ts"),
     output: config.client.output(),
     plugins: [
       replace({
@@ -29,9 +30,9 @@ export default {
         "process.env.NODE_ENV": JSON.stringify(mode),
       }),
       svelte({
-        preprocess: autoPreprocess(),
         dev,
         hydratable: true,
+        preprocess: sveltePreprocess(),
         emitCss: true,
       }),
       resolve({
@@ -39,7 +40,7 @@ export default {
         dedupe: ["svelte"],
       }),
       commonjs(),
-      ts(),
+      typescript({ sourceMap: dev }),
 
       legacy &&
         babel({
@@ -76,7 +77,7 @@ export default {
   },
 
   server: {
-    input: config.server.input(),
+    input: { server: config.server.input().server.replace(/.js$/, ".ts") },
     output: config.server.output(),
     plugins: [
       replace({
@@ -84,16 +85,16 @@ export default {
         "process.env.NODE_ENV": JSON.stringify(mode),
       }),
       svelte({
-        preprocess: autoPreprocess(),
         generate: "ssr",
         hydratable: true,
+        preprocess: sveltePreprocess(),
         dev,
       }),
       resolve({
         dedupe: ["svelte"],
       }),
       commonjs(),
-      ts(),
+      typescript({ sourceMap: dev }),
     ],
     external: Object.keys(pkg.dependencies).concat(
       require("module").builtinModules,
@@ -104,7 +105,7 @@ export default {
   },
 
   serviceworker: {
-    input: config.serviceworker.input(),
+    input: config.serviceworker.input().replace(/.js$/, ".ts"),
     output: config.serviceworker.output(),
     plugins: [
       resolve(),
@@ -113,6 +114,7 @@ export default {
         "process.env.NODE_ENV": JSON.stringify(mode),
       }),
       commonjs(),
+      typescript({ sourceMap: dev }),
       !dev && terser(),
     ],
 

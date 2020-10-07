@@ -5,7 +5,7 @@ tags: Hart aber fair, Cancel Culture, Political Correctness
 lang: de
 ---
 
-Wenn man die neueste Diskussionsrunde von "Hart aber fair" in einem Wort zusammenfassen müsste, würde man wohl _unfokussiert_ wählen. Es ging schlicht um zu viele verschiedene Themen: Cancel Culture, politische Korrektheit, Rassismus, Feminismus, etc. Jedes dieser Themen könnte dutzende Diskussionsrunden bieten, ohne je an einem "Ende" der Diskussion anzukommen. Diese bunte Mischung an Themen - lose zusammen gebunden mit dem Thema _Sprache_ - sorgt für wilde Sprünge in der Diskussion, für Unterbrechungen und dafür dass kein Thema angemessen diskutiert werden kann.
+Wenn man die neueste Diskussionsrunde von "Hart aber fair"^[Einsehbar unter [https://www.ardmediathek.de/ard/video/hart-aber-fair/streit-um-die-sprache-was-darf-man-noch-sagen-und-was-besser-nicht/das-erste/Y3JpZDovL3dkci5kZS9CZWl0cmFnLWIyZDNlNjVmLThhYTAtNDg1NC1iMDk3LTcyNzAzNjE1MWViNA/](https://www.ardmediathek.de/ard/video/hart-aber-fair/streit-um-die-sprache-was-darf-man-noch-sagen-und-was-besser-nicht/das-erste/Y3JpZDovL3dkci5kZS9CZWl0cmFnLWIyZDNlNjVmLThhYTAtNDg1NC1iMDk3LTcyNzAzNjE1MWViNA/)] in einem Wort zusammenfassen müsste, würde man wohl _unfokussiert_ wählen. Es ging schlicht um zu viele verschiedene Themen: Cancel Culture, politische Korrektheit, Rassismus, Feminismus, etc. Jedes dieser Themen könnte dutzende Diskussionsrunden bieten, ohne je an einem "Ende" der Diskussion anzukommen. Diese bunte Mischung an Themen - lose zusammen gebunden mit dem Thema _Sprache_ - sorgt für wilde Sprünge in der Diskussion, für Unterbrechungen und dafür dass kein Thema angemessen diskutiert werden kann.
 
 Auch wenn ich meine Kritikpunkte habe, was die Auswahl der Gäste oder einzelne Argumente angeht, nutze ich diese Ausstrahlung als Chance meine Ansichten zu diesem weiten Themengebiet niederzuschreiben, statt schlicht eine mittelmäßige Diskussion zu kritisieren.
 
@@ -19,7 +19,7 @@ Zusätzlich können die Begriffe die wir benutzen und die Konnationen dieser Beg
 
 Hinzu kommt noch, dass Minderheiten selbstverständlich auch mit bestimmten Wörtern angegriffen werden. Dass zeigt die Geschichte von Begriffen wie dem N-Wort, "Schwuchtel", "Queer", etc. Die Diskussion sollte sich daher darum drehen, welche Wörter wir wie benutzen, was diese für welche Gruppen bedeuten, was ihre Geschichte ist und welche Wörter besser sind. Diese Diskussionen finden statt, nur nicht im ARD. Dort findet sie nutzlose Debatte statt, _ob_ wir über Sprache diskutieren sollten - ein Punkt gegen den ich noch kein Argument gehört habe. Diese Diskussion auf zwei verschiedenen Ebenen wird von den Gegnern der poltischen Korrektheit geschickt ausgenutzt: Wenn jemand argumentiert, dass Sprache eine Auswirkung hat und wir über unsere Sprache diskutieren sollten, wird ein Beispiel gefunden in dem die Korrektheit "zu weit ging". Wenn jemand Beispiel findet, wo die Korrektheit angebracht war, wird argumentiert, dass Sprache "unschuldig" ist und man darüber nicht diskutieren sollte. In diesem ewigen Kreis gibt es kein vorankommen, nur stagnieren. Und damit auch keine politische Korrektheit.
 
-Die Diskussion die wir eigentlich führen _sollten_ besteht aus mehreren kleineren Debatten:
+Die Diskussion die wir eigentlich führen _sollten_, besteht aus mehreren kleineren Debatten:
 
 1. Hat Sprache einen Effekt auf Diskriminierung? Meiner Meinung nach, ja.
 2. Welche Aspekte unserer Sprache hat eine negative Auswirkung? Hier zum Beispiel gegenderte Wörter oder Begriffe für Minderheiten.

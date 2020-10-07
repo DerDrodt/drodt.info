@@ -1,14 +1,10 @@
 import fs from "fs";
 import path from "path";
-import md from "markdown-it";
+import mdIt from "markdown-it";
 import footNote from "markdown-it-footnote";
 import anchor from "markdown-it-anchor";
 import { extractFrontmatter } from "../../util/markdown";
-import { makeSlugProcessor } from "../../util/slug";
-import { SLUG_PRESERVE_UNICODE } from "../../../config";
 import type { Post } from "../../types/post";
-
-const makeSlug = makeSlugProcessor(SLUG_PRESERVE_UNICODE);
 
 export default function getPosts(): Post[] {
   return fs
@@ -25,16 +21,21 @@ export default function getPosts(): Post[] {
 
       const { content, metadata } = extractFrontmatter(markdown);
 
-      const date = new Date(`${pubDate} EDT`);
+      const date = new Date(`${pubDate} UTC+2`);
       metadata.pubDate = pubDate;
-      metadata.dateString = date.toDateString();
+      metadata.lang = metadata.lang ?? "en";
+      metadata.dateString = new Intl.DateTimeFormat(metadata.lang, {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }).format(date);
       const tagString = (metadata.tags as unknown) as string;
       metadata.tags = tagString.split(", ");
-      metadata.lang = metadata.lang ?? "en";
 
       const quotes = metadata.lang === "de" ? `„“‚‘` : `“”‘’`;
 
-      const renderer = md({
+      const md = mdIt({
         typographer: true,
         quotes,
       })
@@ -43,10 +44,12 @@ export default function getPosts(): Post[] {
           permalink: true,
           permalinkBefore: false,
           permalinkSymbol: "🔗",
-          permalinkHref: (fragment) => `blog/${slug}#${fragment}`,
+          permalinkHref: (fragment: string) => `blog/${slug}#${fragment}`,
         });
 
-      const html: string = renderer.render(
+      customizeRules(md, slug, metadata.lang);
+
+      const html: string = md.render(
         content.replace(/^\t+/gm, (match) => match.split("\t").join("  ")),
       );
 
@@ -58,3 +61,58 @@ export default function getPosts(): Post[] {
     })
     .sort((a, b) => (a.metadata.pubDate < b.metadata.pubDate ? 1 : -1));
 }
+
+const customizeRules = (md: any, slug: string, lang: string) => {
+  // Customize footnotes
+
+  md.renderer.rules.footnote_ref = (
+    tokens: any[],
+    idx: number,
+    options: any,
+    env: any,
+    slf: any,
+  ) => {
+    const id = slf.rules.footnote_anchor_name(tokens, idx, options, env, slf);
+    const caption = slf.rules.footnote_caption(tokens, idx, options, env, slf);
+    let refId = id;
+
+    if (tokens[idx].meta.subId > 0) {
+      refId += ":" + tokens[idx].meta.subId;
+    }
+
+    return `<sup class="footnote-ref"><a href="blog/${slug}#fn${id}" id="fnref${refId}">${caption}</a></sup>`;
+  };
+
+  md.renderer.rules.footnote_anchor = (
+    tokens: any[],
+    idx: number,
+    options: any,
+    env: any,
+    slf: any,
+  ) => {
+    var id = slf.rules.footnote_anchor_name(tokens, idx, options, env, slf);
+
+    if (tokens[idx].meta.subId > 0) {
+      id += ":" + tokens[idx].meta.subId;
+    }
+
+    /* ↩ with escape code to prevent display as Apple Emoji on iOS */
+    return ` <a href="blog/${slug}#fnref${id}" class="footnote-backref">↩︎</a>`;
+  };
+
+  md.renderer.rules.footnote_block_open = (
+    tokens: any,
+    idx: number,
+    options: any,
+  ) => {
+    return `${
+      options.xhtmlOut
+        ? '<hr class="footnotes-sep" />'
+        : '<hr class="footnotes-sep">'
+    }
+        <section class="footnotes">
+        <h3>${lang === "en" ? "Footnotes" : "Fußnoten"}</h3>
+        <ol class="footnotes-list">
+`;
+  };
+};

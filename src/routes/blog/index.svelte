@@ -1,11 +1,13 @@
 <script context="module" lang="ts">
-  export function preload({ params, query }) {
+  import type { Preload } from "../../types/sapper";
+
+  export const preload: Preload = async function (this, { params, query }) {
     return this.fetch(`blog.json`)
       .then((r) => r.json())
       .then((posts: Post[]) => {
         return { posts, tag: query.tag };
       });
-  }
+  };
 </script>
 
 <script lang="ts">
@@ -77,6 +79,8 @@
 </svelte:head>
 
 <h1>Recent posts</h1>
+
+<a href="./#f">Text</a>
 
 {#if tag !== undefined}
   <p>
