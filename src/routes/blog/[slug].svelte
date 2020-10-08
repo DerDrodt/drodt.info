@@ -22,7 +22,8 @@
   export let post: Post;
 
   function updateLang(lang: string) {
-    if (process.browser) document?.documentElement.setAttribute("lang", lang);
+    if ((process as any).browser)
+      document.documentElement.setAttribute("lang", lang);
   }
 
   updateLang(post.metadata.lang);
@@ -84,6 +85,8 @@
 
   <p class="byline">
     <time datetime={post.metadata.pubDate}>{post.metadata.dateString}</time>
+    •
+    <span class="time-to-read">{post.metadata.timeToReadString}</span>
   </p>
 
   {@html post.html}

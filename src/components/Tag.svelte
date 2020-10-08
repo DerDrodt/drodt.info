@@ -14,9 +14,9 @@
     border-radius: 3px;
     padding: 4px;
     margin: 0 8px 0 0;
-    font-size: 0.8em;
+    font-size: 0.8rem;
     color: #fff;
-    height: 28px;
+    height: 24px;
     line-height: 28px;
   }
 </style>
