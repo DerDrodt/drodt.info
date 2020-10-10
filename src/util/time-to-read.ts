@@ -14,7 +14,7 @@ export const timeToRead = (html: string) => {
   if (timeToRead === 0) {
     timeToRead = 1;
   }
-  return timeToRead;
+  return [wordCount, timeToRead];
 };
 
 export const formatTimeToRead = (t: number, lang: string) => {

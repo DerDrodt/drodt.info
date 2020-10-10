@@ -88,6 +88,12 @@
     •
     <span class="time-to-read">{post.metadata.timeToReadString}</span>
   </p>
-
+  {#if process.env.NODE_ENV === 'development'}
+    <div style="position: fixed; bottom: 16px; left: 16px;">
+      {post.metadata.wordCount}
+      words |
+      {post.metadata.timeToRead}min
+    </div>
+  {/if}
   {@html post.html}
 </article>

@@ -11,6 +11,7 @@ export interface Metadata {
   description: string;
   tags: string[];
   lang: string;
+  wordCount: number;
   timeToRead: number;
   timeToReadString: string;
 }

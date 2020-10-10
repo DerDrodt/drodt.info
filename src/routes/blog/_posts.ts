@@ -5,7 +5,10 @@ import footNote from "markdown-it-footnote";
 import anchor from "markdown-it-anchor";
 import { extractFrontmatter } from "../../util/markdown";
 import type { Post } from "../../types/post";
-import { formatTimeToRead, timeToRead } from "../../util/time-to-read";
+import {
+  formatTimeToRead,
+  timeToRead as estimateTimeToRead,
+} from "../../util/time-to-read";
 
 export default function getPosts(): Post[] {
   return fs
@@ -54,11 +57,10 @@ export default function getPosts(): Post[] {
         content.replace(/^\t+/gm, (match) => match.split("\t").join("  ")),
       );
 
-      metadata.timeToRead = timeToRead(html);
-      metadata.timeToReadString = formatTimeToRead(
-        metadata.timeToRead,
-        metadata.lang,
-      );
+      const [wordCount, timeToRead] = estimateTimeToRead(html);
+      metadata.wordCount = wordCount;
+      metadata.timeToRead = timeToRead;
+      metadata.timeToReadString = formatTimeToRead(timeToRead, metadata.lang);
 
       return {
         html,

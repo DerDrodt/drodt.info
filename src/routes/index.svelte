@@ -1,6 +1,26 @@
+<script context="module" lang="ts">
+  import type { Preload } from "../types/sapper";
+
+  export const preload: Preload = async function (this, { params, query }) {
+    const res = await this.fetch(`blog.json`);
+    const data = await res.json();
+
+    if (res.status === 200) {
+      return { latestPost: data[0] };
+    } else {
+      this.error(res.status, data.message);
+    }
+  };
+</script>
+
+<script lang="ts">
+  import type { Post } from "../types/post";
+
+  export let latestPost: Post;
+</script>
+
 <style>
-  h1,
-  p {
+  h1 {
     text-align: center;
     margin: 0 auto;
   }
@@ -27,9 +47,17 @@
   <title>Drodt.info</title>
 </svelte:head>
 
-<h1>Great success!</h1>
+<h1>Drodt.info</h1>
+
+<p>Welcome to my personal blog!</p>
 
 <p>
-  <strong>Try editing this file (src/routes/index.svelte) to test live
-    reloading.</strong>
+  On here I write about whatever interests me. This includes politics, web
+  development, computer science and open source.
+</p>
+
+<p>
+  My latest post is
+  <a href={`blog/${latestPost.slug}`}>{latestPost.metadata.title}</a>
+  {#if latestPost.metadata.lang === 'de'}(in German){/if}
 </p>
