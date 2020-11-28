@@ -11,6 +11,18 @@
   --h1: 3rem;
   --linemax: 42em;
   --lh: 1.5;
+
+  --back: #ffffff;
+  --back-light: #282c34;
+  --back-api: #eff8ff;
+  --prime: #ff3e00;
+  --second: #676778;
+  --flash: #40b3ff;
+  --heading: var(--second);
+  --text: #444;
+  --sidebar-text: rgba(255, 255, 255, 0.75);
+  --border-w: 0.1rem; /* border-width  */
+  --border-r: 0.2rem; /* border-radius */
 }
 
 body {
@@ -20,6 +32,8 @@ body {
   font-size: 14px;
   line-height: 1.5;
   color: #333;
+
+  --font-mono: "Fira Mono", monospace;
 }
 
 h1,
@@ -41,13 +55,39 @@ a {
   color: inherit;
 }
 
+div[class*="language-"] {
+  position: relative;
+  background-color: #282c34;
+  border-radius: 6px;
+}
+
 code {
-  font-family: menlo, inconsolata, monospace;
-  font-size: calc(1em - 2px);
-  color: #555;
-  background-color: #f0f0f0;
-  padding: 0.2em 0.4em;
   border-radius: 2px;
+  font-size: 0.9em;
+}
+
+pre,
+pre[class*="language-"] {
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+div[class*="language-"]::before {
+  position: absolute;
+  z-index: 3;
+  top: 0.8em;
+  right: 1em;
+  font-size: 0.75rem;
+  color: hsla(0, 0%, 100%, 0.4);
+}
+
+div[class~="language-js"]::before {
+  content: "js";
+}
+
+div[class~="language-abs"]::before {
+  content: "abs";
 }
 
 .no-underline {

@@ -63,6 +63,12 @@ export default {
                 useESModules: true,
               },
             ],
+            ["prismjs", {
+              "languages": ["javascript", "css", "markup", "java"],
+              "plugins": ["line-numbers"],
+              "theme": "twilight",
+              "css": true
+            }]
           ],
         }),
 

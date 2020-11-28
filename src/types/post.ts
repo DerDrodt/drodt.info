@@ -14,4 +14,5 @@ export interface Metadata {
   wordCount: number;
   timeToRead: number;
   timeToReadString: string;
+  isDraft: boolean;
 }

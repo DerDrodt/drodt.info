@@ -50,7 +50,6 @@
   .byline {
     margin: 0 0 2rem 0;
     padding: 0;
-    border-top: var(--border-w) solid #6767785b;
     font-size: var(--h6);
     text-transform: uppercase;
   }
@@ -59,6 +58,11 @@
     color: var(--second);
     max-width: 20em;
     margin: 0 0 0.8rem 0;
+  }
+
+  .post p,
+  .content {
+    text-align: justify;
   }
 
   .tags {
@@ -95,5 +99,7 @@
       {post.metadata.timeToRead}min
     </div>
   {/if}
-  {@html post.html}
+  <div class="content">
+    {@html post.html}
+  </div>
 </article>

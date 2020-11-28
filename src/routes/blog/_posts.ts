@@ -9,6 +9,10 @@ import {
   formatTimeToRead,
   timeToRead as estimateTimeToRead,
 } from "../../util/time-to-read";
+import { addABS } from "../../util/abs-prism";
+import PrismJS from "prismjs";
+
+addABS(PrismJS.languages);
 
 export default function getPosts(): Post[] {
   return fs
@@ -24,6 +28,14 @@ export default function getPosts(): Post[] {
       const markdown = fs.readFileSync(`content/blog/${file}`, "utf-8");
 
       const { content, metadata } = extractFrontmatter(markdown);
+
+      const draft: boolean = "draft" in metadata;
+      delete (metadata as any).draft;
+      metadata.isDraft = draft;
+
+      if (draft && process.env.NODE_ENV === "production") {
+        return null;
+      }
 
       const date = new Date(`${pubDate} UTC+2`);
       metadata.pubDate = pubDate;
@@ -42,6 +54,16 @@ export default function getPosts(): Post[] {
       const md = mdIt({
         typographer: true,
         quotes,
+        highlight: (source: string, lang?: string) => {
+          const highlighted =
+            lang && PrismJS.languages[lang]
+              ? PrismJS.highlight(source, PrismJS.languages[lang], lang)
+              : source.replace(
+                  /[&<>]/g,
+                  (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]),
+                );
+          return `<pre class='language-${lang}'><code>${highlighted}</code></pre>`;
+        },
       })
         .use(footNote)
         .use(anchor, {
@@ -68,6 +90,7 @@ export default function getPosts(): Post[] {
         slug,
       };
     })
+    .filter((p) => p !== null)
     .sort((a, b) => (a.metadata.pubDate < b.metadata.pubDate ? 1 : -1));
 }
 
@@ -124,4 +147,19 @@ const customizeRules = (md: any, slug: string, lang: string) => {
         <ol class="footnotes-list">
 `;
   };
+
+  const wrap = (wrapped: (...a: any) => string) => (...args: any[]) => {
+    const [tokens, idx] = args;
+    const token = tokens[idx];
+
+    const rawCode = wrapped(...args);
+    console.log(token.content);
+    return (
+      `<!--beforebegin--><div class="language-${token.info.trim()} extra-class">` +
+      `<!--afterbegin-->${rawCode}<!--beforeend--></div><!--afterend-->`
+    );
+  };
+  const { fence, code_block: codeBlock } = md.renderer.rules;
+  md.renderer.rules.fence = wrap(fence);
+  md.renderer.rules.code_block = wrap(codeBlock);
 };
