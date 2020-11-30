@@ -37,12 +37,11 @@
   }
 
   h1 {
-    font-size: 4rem;
     font-weight: 400;
   }
 
   .standfirst {
-    font-size: var(--h4);
+    font-size: var(--h5);
     color: var(--second);
     margin: 0 0 1em 0;
   }
@@ -67,6 +66,25 @@
 
   .tags {
     margin: 0;
+    padding: 0 0 4px 0;
+    overflow-x: auto;
+    white-space: nowrap;
+    height: 28px;
+  }
+
+  @media (min-width: 800px) {
+    h1 {
+      font-size: 4rem;
+    }
+
+    .standfirst {
+      font-size: var(--h4);
+    }
+
+    .tags {
+      margin: 0;
+      overflow-x: unset;
+    }
   }
 </style>
 
@@ -79,11 +97,11 @@
 </svelte:head>
 
 <article class="post listify">
-  <p class="tags">
+  <div class="tags">
     {#each post.metadata.tags as tag}
       <Tag name={tag} />
     {/each}
-  </p>
+  </div>
   <h1>{post.metadata.title}</h1>
   <p class="standfirst">{post.metadata.description}</p>
 
@@ -93,7 +111,8 @@
     <span class="time-to-read">{post.metadata.timeToReadString}</span>
   </p>
   {#if process.env.NODE_ENV === 'development'}
-    <div style="position: fixed; bottom: 16px; left: 16px;">
+    <div
+      style="position: fixed; bottom: 16px; left: 16px; background-color: #fff; z-index: 999; padding: 8px; border-radius: 4px;">
       {post.metadata.wordCount}
       words |
       {post.metadata.timeToRead}min

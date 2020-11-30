@@ -4,14 +4,20 @@
   export let segment;
 </script>
 
-<style>
+<style lang="scss">
+  @import "./style/global.scss";
+
   main {
     position: relative;
     max-width: 56em;
     background-color: white;
-    padding: 2em;
+    padding: 0;
     margin: 0 auto;
     box-sizing: border-box;
+
+    @media (min-width: 800px) {
+      padding: 2em;
+    }
   }
 
   header {

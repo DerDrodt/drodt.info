@@ -9,10 +9,15 @@ import {
   formatTimeToRead,
   timeToRead as estimateTimeToRead,
 } from "../../util/time-to-read";
-import { addABS } from "../../util/abs-prism";
+import { addABS, addRABS } from "../../util/abs-prism";
 import PrismJS from "prismjs";
 
+const loadLanguages = require("prismjs/components/index");
+
+loadLanguages(["rust"]);
+
 addABS(PrismJS.languages);
+addRABS(PrismJS.languages);
 
 export default function getPosts(): Post[] {
   return fs
@@ -153,7 +158,7 @@ const customizeRules = (md: any, slug: string, lang: string) => {
     const token = tokens[idx];
 
     const rawCode = wrapped(...args);
-    console.log(token.content);
+
     return (
       `<!--beforebegin--><div class="language-${token.info.trim()} extra-class">` +
       `<!--afterbegin-->${rawCode}<!--beforeend--></div><!--afterend-->`

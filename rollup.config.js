@@ -13,6 +13,15 @@ const mode = process.env.NODE_ENV;
 const dev = mode === "development";
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
+const preprocess = sveltePreprocess({
+  scss: {
+    includePaths: ['src'],
+  },
+  postcss: {
+    plugins: [require('autoprefixer')],
+  },
+});
+
 const onwarn = (warning, onwarn) =>
   (warning.code === "MISSING_EXPORT" && /'preload'/.test(warning.message)) ||
   (warning.code === "CIRCULAR_DEPENDENCY" &&
@@ -32,7 +41,7 @@ export default {
       svelte({
         dev,
         hydratable: true,
-        preprocess: sveltePreprocess(),
+        preprocess,
         emitCss: true,
       }),
       resolve({
@@ -64,7 +73,7 @@ export default {
               },
             ],
             ["prismjs", {
-              "languages": ["javascript", "css", "markup", "java"],
+              "languages": ["javascript", "css", "markup", "java", "rust"],
               "plugins": ["line-numbers"],
               "theme": "twilight",
               "css": true
@@ -93,7 +102,7 @@ export default {
       svelte({
         generate: "ssr",
         hydratable: true,
-        preprocess: sveltePreprocess(),
+        preprocess,
         dev,
       }),
       resolve({
