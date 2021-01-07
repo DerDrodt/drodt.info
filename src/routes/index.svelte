@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
   import type { Preload } from "../types/sapper";
 
-  export const preload: Preload = async function (this, { params, query }) {
+  export const preload: Preload = async function (this) {
     const res = await this.fetch(`blog.json`);
     const data = await res.json();
 
@@ -19,7 +19,7 @@
   export let latestPost: Post;
 </script>
 
-<style>
+<style lang="scss">
   h1 {
     text-align: center;
     margin: 0 auto;
@@ -30,15 +30,26 @@
     text-transform: uppercase;
     font-weight: 700;
     margin: 0 0 0.5em 0;
+
+    @media (min-width: 480px) {
+      font-size: 4em;
+    }
   }
 
   p {
     margin: 1em auto;
   }
 
-  @media (min-width: 480px) {
-    h1 {
-      font-size: 4em;
+  .face {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    border: 4px #fff solid;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    &-container {
+      display: flex;
+      justify-content: center;
     }
   }
 </style>
@@ -49,11 +60,15 @@
 
 <h1>Drodt.info</h1>
 
+<div class="face-container">
+  <img class="face" src="/pic.jpg" alt="My Face" />
+</div>
+
 <p>Welcome to my personal blog!</p>
 
 <p>
-  On here I write about whatever interests me. This includes politics, web
-  development, computer science and open source.
+  On here I write about whatever interests me. This includes politics,
+  philosophy web development, computer science and open source software.
 </p>
 
 <p>
