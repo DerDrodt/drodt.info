@@ -67,8 +67,22 @@
 <p>Welcome to my personal blog!</p>
 
 <p>
+  I am a student of Computer Science and Philosophy at Technische Universität
+  Darmstadt working towards his Master. My main focus of study seems to be
+  formal verification, but maybe that will change. Who knows?
+</p>
+
+<p>
   On here I write about whatever interests me. This includes politics,
   philosophy web development, computer science and open source software.
+</p>
+
+<p>
+  You can also follow me on
+  <a href="https://twitter.com/DerDrodtel">Twitter</a>
+  or
+  <a href="https://www.linkedin.com/in/daniel-drodt-95a960159/">LinkenIn</a>, if
+  you want.
 </p>
 
 <p>

@@ -69,8 +69,8 @@ export default function getPosts(): Post[] {
         month: "long",
         day: "numeric",
       }).format(date);
-      const tagString = (metadata.tags as unknown) as string;
-      metadata.tags = tagString.split(", ");
+      const tagString = (metadata.tags as unknown) as string | undefined;
+      metadata.tags = tagString?.split(", ") ?? [];
 
       const quotes = metadata.lang === "de" ? `„“‚‘` : `“”‘’`;
 
