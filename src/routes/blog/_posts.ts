@@ -19,32 +19,49 @@ loadLanguages(["rust"]);
 addABS(PrismJS.languages);
 addRABS(PrismJS.languages);
 
+const fallbackDate = (d: string | undefined): [string, boolean] => {
+  const now = new Date();
+  if (d === undefined) {
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+    const nMonth = month < 10 ? `0${month}` : month;
+    const day = now.getUTCDate() + 1;
+    const nDay = day < 10 ? `0${day}` : day;
+    return [`${year}-${nMonth}-${nDay}`, true];
+  } else {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(d)) {
+      throw new Error(`Invalid Date format: "${d}"`);
+    }
+    return [d, false];
+  }
+};
+
 export default function getPosts(): Post[] {
   return fs
     .readdirSync("content/blog")
     .map((file) => {
       if (path.extname(file) !== ".md") return;
 
-      const match = /^(\d{4}-\d{2}-\d{2})-(.+)\.md$/.exec(file);
+      const match = /^(.+)\.md$/.exec(file);
       if (!match) throw new Error(`Invalid filename '${file}'`);
 
-      const [, pubDate, slug] = match;
+      const [, slug] = match;
 
       const markdown = fs.readFileSync(`content/blog/${file}`, "utf-8");
 
       const { content, metadata } = extractFrontmatter(markdown);
 
-      const draft: boolean = "draft" in metadata;
-      delete (metadata as any).draft;
-      metadata.isDraft = draft;
+      const [pubDate, isDraft] = fallbackDate(metadata.date);
 
-      if (draft && process.env.NODE_ENV === "production") {
+      metadata.isDraft = isDraft;
+
+      if (isDraft && process.env.NODE_ENV === "production") {
         console.log(`Skipping draft ${metadata.title}`);
         return null;
       }
 
       const date = new Date(`${pubDate} UTC+2`);
-      metadata.pubDate = pubDate;
+      metadata.date = pubDate;
       metadata.lang = metadata.lang ?? "en";
       metadata.dateString = new Intl.DateTimeFormat(metadata.lang, {
         weekday: "long",
@@ -97,7 +114,7 @@ export default function getPosts(): Post[] {
       };
     })
     .filter((p) => p !== null)
-    .sort((a, b) => (a.metadata.pubDate < b.metadata.pubDate ? 1 : -1));
+    .sort((a, b) => (a.metadata.date < b.metadata.date ? 1 : -1));
 }
 
 const customizeRules = (md: any, slug: string, lang: string) => {

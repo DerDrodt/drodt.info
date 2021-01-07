@@ -2,7 +2,6 @@
 title: Redesigning ABS
 description: How can a language such as ABS, specifically designed to be analyzed, be improved? What effect does the type system have on verifiability? What mistakes were made in this regard with ABS?
 tags: Computer Science, Language Design, ABS, Type System
-draft: true
 ---
 
 Recently, I was tasked to implement multiple extensions and analyses of ABS in the compiler as part of my bachelor's thesis. The goal was to reduce the effort necessary to prove properties of ABS models and analyze them easier. How successful this was, and how it was achieved can be read in my Bachelor thesis. This post aims to add some general thoughts on the design of ABS and some of the errors I see, that harm further analysis of ABS.

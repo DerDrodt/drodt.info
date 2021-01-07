@@ -87,7 +87,7 @@
 </style>
 
 <svelte:head>
-  <title>{post.metadata.title}</title>
+  <title>{post.metadata.title} | Drodt</title>
 
   <meta name="twitter:title" content={post.metadata.title} />
   <meta name="twitter:description" content={post.metadata.description} />
@@ -104,7 +104,7 @@
   <p class="standfirst">{post.metadata.description}</p>
 
   <p class="byline">
-    <time datetime={post.metadata.pubDate}>{post.metadata.dateString}</time>
+    <time datetime={post.metadata.date}>{post.metadata.dateString}</time>
     •
     <span class="time-to-read">{post.metadata.timeToReadString}</span>
   </p>
@@ -114,6 +114,12 @@
       {post.metadata.wordCount}
       words |
       {post.metadata.timeToRead}min
+    </div>
+  {/if}
+  {#if post.metadata.isDraft}
+    <div
+      style="position: fixed; bottom: 16px; right: 16px; background-color: #fff; z-index: 999; padding: 8px; border-radius: 4px; color: red;">
+      DRAFT
     </div>
   {/if}
   <div class="content">
