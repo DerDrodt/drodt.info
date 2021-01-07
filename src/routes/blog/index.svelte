@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
   import type { Preload } from "../../types/sapper";
 
-  export const preload: Preload = async function (this, { params, query }) {
+  export const preload: Preload = async function (this, { query }) {
     return this.fetch(`blog.json`)
       .then((r) => r.json())
       .then((posts: Post[]) => {
@@ -17,7 +17,7 @@
   export let tag: string | undefined;
 </script>
 
-<style>
+<style lang="scss">
   .posts {
     grid-template-columns: 1fr 1fr;
     grid-gap: 1em;
@@ -25,7 +25,13 @@
     padding: var(--top-offset) var(--side-nav) 6rem var(--side-nav);
     max-width: var(--main-width);
     margin: 0 auto;
+
+    a:hover,
+    a:hover > h2 {
+      color: var(--flash);
+    }
   }
+
   h2 {
     display: inline-block;
     margin: 1rem 0 0.4rem 0;
@@ -34,39 +40,43 @@
     font-size: var(--h3);
     font-weight: 400;
   }
-  .post:first-child {
-    margin: 0 0 2rem 0;
-    padding: 0 0 1rem 0;
-    border-bottom: var(--border-w) solid #6767785b; /* based on --second */
-  }
-  .post:first-child h2 {
-    font-size: 3rem;
-    font-weight: 400;
-    color: var(--second);
-  }
-  .post:first-child::before,
-  .post:nth-child(2)::before {
-    content: "Latest post • " attr(data-pubdate);
-    color: var(--flash);
-    font-size: var(--h6);
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-  .post:nth-child(2)::before {
-    content: "Older posts";
-  }
-  .post p {
-    font-size: var(--h5);
-    max-width: 30em;
-    color: var(--second);
-  }
-  .post > a {
-    display: block;
-  }
-  .posts a:hover,
-  .posts a:hover > h2 {
-    color: var(--flash);
+
+  .post {
+    &:first-child {
+      margin: 0 0 2rem 0;
+      padding: 0 0 1rem 0;
+      border-bottom: var(--border-w) solid #6767785b; /* based on --second */
+
+      h2 {
+        font-size: 3rem;
+        font-weight: 400;
+        color: var(--second);
+      }
+    }
+
+    &:first-child::before,
+    &:nth-child(2)::before {
+      content: "Latest post • " attr(data-pubdate);
+      color: var(--text);
+      font-size: var(--h6);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    &:nth-child(2)::before {
+      content: "Older posts";
+    }
+
+    p {
+      font-size: var(--h5);
+      max-width: 30em;
+      color: var(--second);
+    }
+
+    & > a {
+      display: block;
+    }
   }
 
   .tags {

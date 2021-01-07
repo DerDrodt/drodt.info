@@ -96,8 +96,21 @@ div[class~="language-rust"] {
   }
 }
 
-.no-underline {
-  text-decoration: none;
+:global {
+  .no-underline {
+    text-decoration: none;
+  }
+}
+
+blockquote {
+  border-left: 3px solid #b2b2b7;
+  margin: 16px 32px 16px 0;
+  padding-left: 32px;
+
+  @media (min-width: 800px) {
+    margin-right: 48px;
+    padding-left: 48px;
+  }
 }
 
 .header-anchor {

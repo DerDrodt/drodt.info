@@ -29,21 +29,35 @@
   updateLang(post.metadata.lang);
 </script>
 
-<style>
+<style lang="scss">
   .post {
     padding: var(--top-offset) var(--side-nav) 6rem var(--side-nav);
     max-width: var(--main-width);
     margin: 0 auto;
+
+    h1 {
+      color: var(--second);
+      max-width: 20em;
+      margin: 0 0 0.8rem 0;
+    }
   }
 
   h1 {
     font-weight: 400;
+
+    @media (min-width: 800px) {
+      font-size: 4rem;
+    }
   }
 
   .standfirst {
     font-size: var(--h5);
     color: var(--second);
     margin: 0 0 1em 0;
+
+    @media (min-width: 800px) {
+      font-size: var(--h4);
+    }
   }
 
   .byline {
@@ -51,12 +65,6 @@
     padding: 0;
     font-size: var(--h6);
     text-transform: uppercase;
-  }
-
-  .post h1 {
-    color: var(--second);
-    max-width: 20em;
-    margin: 0 0 0.8rem 0;
   }
 
   .post p,
@@ -70,18 +78,8 @@
     overflow-x: auto;
     white-space: nowrap;
     height: 28px;
-  }
 
-  @media (min-width: 800px) {
-    h1 {
-      font-size: 4rem;
-    }
-
-    .standfirst {
-      font-size: var(--h4);
-    }
-
-    .tags {
+    @media (min-width: 800px) {
       margin: 0;
       overflow-x: unset;
     }

@@ -5,7 +5,9 @@
 </script>
 
 <style lang="scss">
-  @import "./style/global.scss";
+  :global {
+    @import "./style/global.scss";
+  }
 
   main {
     position: relative;
