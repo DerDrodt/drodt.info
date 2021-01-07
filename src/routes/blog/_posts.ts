@@ -39,6 +39,7 @@ export default function getPosts(): Post[] {
       metadata.isDraft = draft;
 
       if (draft && process.env.NODE_ENV === "production") {
+        console.log(`Skipping draft ${metadata.title}`);
         return null;
       }
 
