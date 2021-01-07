@@ -6,7 +6,7 @@ export interface Post {
 
 export interface Metadata {
   dateString: string;
-  pubDate: string;
+  date: string;
   title: string;
   description: string;
   tags: string[];

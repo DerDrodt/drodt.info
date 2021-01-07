@@ -3,7 +3,6 @@ title: Kommentar zu "Hart aber fair" vom 05.10.2020
 description: Die Diskussionsrunde im ARD zum Thema "Streit um die Sprache; Was darf man noch sagen und was besser nicht?" ließ viele Aspekte der Diskussion um Sprache auf dem Tisch.
 tags: Hart aber fair, Cancel Culture, Political Correctness
 lang: de
-draft: true
 ---
 
 Wenn man die neueste Diskussionsrunde von "Hart aber fair"^[Einsehbar unter [https://www.ardmediathek.de/ard/video/hart-aber-fair/streit-um-die-sprache-was-darf-man-noch-sagen-und-was-besser-nicht/das-erste/Y3JpZDovL3dkci5kZS9CZWl0cmFnLWIyZDNlNjVmLThhYTAtNDg1NC1iMDk3LTcyNzAzNjE1MWViNA/](https://www.ardmediathek.de/ard/video/hart-aber-fair/streit-um-die-sprache-was-darf-man-noch-sagen-und-was-besser-nicht/das-erste/Y3JpZDovL3dkci5kZS9CZWl0cmFnLWIyZDNlNjVmLThhYTAtNDg1NC1iMDk3LTcyNzAzNjE1MWViNA/)] in einem Wort zusammenfassen müsste, würde man wohl _unfokussiert_ wählen. Es ging schlicht um zu viele verschiedene Themen: Cancel Culture, politische Korrektheit, Rassismus, Feminismus, etc. Jedes dieser Themen könnte dutzende Diskussionsrunden bieten, ohne je an einem "Ende" der Diskussion anzukommen. Diese bunte Mischung an Themen --- lose zusammen gebunden mit dem Thema _Sprache_ --- sorgt für wilde Sprünge in der Diskussion, für Unterbrechungen und dafür dass kein Thema angemessen diskutiert werden kann.
