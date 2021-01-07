@@ -69,8 +69,6 @@ ${drafts.map((d) => `${d.slug}`).join("\n")}
     `$1date: ${today()}\n---`,
   );
 
-  console.log(replaced);
-
   fs.writeFileSync(`content/blog/${result.slug}.md`, replaced);
 
   console.log("Done!");
