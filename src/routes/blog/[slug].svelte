@@ -95,11 +95,13 @@
 </svelte:head>
 
 <article class="post listify">
-  <div class="tags">
-    {#each post.metadata.tags as tag}
-      <Tag name={tag} />
-    {/each}
-  </div>
+  {#if post.metadata.tags.length > 0}
+    <div class="tags">
+      {#each post.metadata.tags as tag}
+        <Tag name={tag} />
+      {/each}
+    </div>
+  {/if}
   <h1>{post.metadata.title}</h1>
   <p class="standfirst">{post.metadata.description}</p>
 
