@@ -9,7 +9,8 @@
     "export": "vite build",
     "start": "node build",
     "validate": "svelte-check",
-    "publish": "node scripts/publish.mjs"
+    "publish": "node scripts/publish.mjs",
+    "postbuild": "cp -r content .netlify/server"
   },
   "dependencies": {
     "@sindresorhus/slugify": "^2.1.0",
