@@ -1,11 +1,13 @@
 import sveltePreprocess from "svelte-preprocess";
 import autoprefixer from "autoprefixer";
-import adapter from "@sveltejs/adapter-auto";
+import vercel from "@sveltejs/adapter-vercel";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   kit: {
-    adapter: adapter(),
+    adapter: vercel({
+      includePaths: ["content"],
+    }),
   },
   preprocess: sveltePreprocess({
     scss: {
