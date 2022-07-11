@@ -22,6 +22,7 @@
     "sass": "^1.53.0"
   },
   "devDependencies": {
+    "@sveltejs/adapter-netlify": "^1.0.0-next.67",
     "@sveltejs/adapter-vercel": "^1.0.0-next.60",
     "@sveltejs/kit": "^1.0.0-next.363",
     "@tsconfig/svelte": "^3.0.0",
