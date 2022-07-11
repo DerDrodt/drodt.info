@@ -1,12 +1,11 @@
 <script context="module" lang="ts">
-  import type { Preload } from "../../types/sapper";
+  import type { Load } from "./__types/index";
 
-  export const preload: Preload = async function (this, { query }) {
-    return this.fetch(`blog.json`)
-      .then((r) => r.json())
-      .then((posts: Post[]) => {
-        return { posts, tag: query.tag };
-      });
+  export const load: Load = async function ({ fetch, url }) {
+    const res = await fetch("blog.json");
+    const posts = await res.json();
+
+    return { status: 200, props: { posts, tag: url.searchParams.get("tag") } };
   };
 </script>
 
@@ -14,8 +13,45 @@
   import Tag from "../../components/Tag.svelte";
   import type { Post } from "../../types/post";
   export let posts: Post[];
-  export let tag: string | undefined;
+  export let tag: string | null;
 </script>
+
+<svelte:head>
+  <title>Blog | Drodt</title>
+
+  <meta name="twitter:title" content="Drodt.info" />
+  <meta name="twitter:description" content="Articles by Daniel Drodt" />
+  <meta name="Description" content="Articles by Daniel Drodt" />
+</svelte:head>
+
+{#if tag !== null}
+  <p class="current-tag">
+    Showing all articles for
+    <Tag name={tag} />
+    <a href="/blog">Show all</a>
+  </p>
+{/if}
+
+<div class="posts stretch">
+  {#each posts.filter((p) => tag === null || p.metadata.tags.includes(tag)) as post}
+    <article class="post" data-pubdate={post.metadata.dateString}>
+      <a
+        class="no-underline"
+        rel="prefetch"
+        href="blog/{post.slug}"
+        title="Read the article »"
+      >
+        <h2>{post.metadata.title}</h2>
+        <p class="tags">
+          {#each post.metadata.tags as tag}
+            <Tag name={tag} />
+          {/each}
+        </p>
+        <p>{post.metadata.description}</p>
+      </a>
+    </article>
+  {/each}
+</div>
 
 <style lang="scss">
   .posts {
@@ -87,43 +123,3 @@
     padding: 0 var(--side-nav);
   }
 </style>
-
-<svelte:head>
-  <title>Blog | Drodt</title>
-
-  <meta name="twitter:title" content="Drodt.info" />
-  <meta name="twitter:description" content="Articles by Daniel Drodt" />
-  <meta name="Description" content="Articles by Daniel Drodt" />
-</svelte:head>
-
-{#if tag !== undefined}
-  <p class="current-tag">
-    Showing all articles for
-    <Tag name={tag} />
-    <a href="/blog">Show all</a>
-  </p>
-{/if}
-
-<div class="posts stretch">
-  {#each posts.filter((p) => tag === undefined || p.metadata.tags.includes(tag)) as post}
-    <!-- we're using the non-standard `rel=prefetch` attribute to
-				tell Sapper to load the data for the page as soon as
-				the user hovers over the link or taps it, instead of
-				waiting for the 'click' event -->
-    <article class="post" data-pubdate={post.metadata.dateString}>
-      <a
-        class="no-underline"
-        rel="prefetch"
-        href="blog/{post.slug}"
-        title="Read the article »">
-        <h2>{post.metadata.title}</h2>
-        <p class="tags">
-          {#each post.metadata.tags as tag}
-            <Tag name={tag} />
-          {/each}
-        </p>
-        <p>{post.metadata.description}</p>
-      </a>
-    </article>
-  {/each}
-</div>

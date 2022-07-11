@@ -11,8 +11,9 @@ import {
 } from "../../util/time-to-read";
 import { addABS, addRABS } from "../../util/abs-prism";
 import PrismJS from "prismjs";
+import { dev } from "$app/env";
 
-const loadLanguages = require("prismjs/components/index");
+import loadLanguages from "prismjs/components/index.js";
 
 loadLanguages(["rust"]);
 
@@ -55,7 +56,7 @@ export default function getPosts(): Post[] {
 
       metadata.isDraft = isDraft;
 
-      if (isDraft && process.env.NODE_ENV === "production") {
+      if (isDraft && !dev) {
         console.log(`Skipping draft ${metadata.title}`);
         return null;
       }
@@ -69,7 +70,7 @@ export default function getPosts(): Post[] {
         month: "long",
         day: "numeric",
       }).format(date);
-      const tagString = (metadata.tags as unknown) as string | undefined;
+      const tagString = metadata.tags as unknown as string | undefined;
       metadata.tags = tagString?.split(", ") ?? [];
 
       const quotes = metadata.lang === "de" ? `„“‚‘` : `“”‘’`;
@@ -90,10 +91,7 @@ export default function getPosts(): Post[] {
       })
         .use(footNote)
         .use(anchor, {
-          permalink: true,
-          permalinkBefore: false,
-          permalinkSymbol: "🔗",
-          permalinkHref: (fragment: string) => `blog/${slug}#${fragment}`,
+          permalink: anchor.permalink.headerLink(),
         });
 
       customizeRules(md, slug, metadata.lang);
@@ -171,17 +169,19 @@ const customizeRules = (md: any, slug: string, lang: string) => {
 `;
   };
 
-  const wrap = (wrapped: (...a: any) => string) => (...args: any[]) => {
-    const [tokens, idx] = args;
-    const token = tokens[idx];
+  const wrap =
+    (wrapped: (...a: any) => string) =>
+    (...args: any[]) => {
+      const [tokens, idx] = args;
+      const token = tokens[idx];
 
-    const rawCode = wrapped(...args);
+      const rawCode = wrapped(...args);
 
-    return (
-      `<!--beforebegin--><div class="language-${token.info.trim()} extra-class">` +
-      `<!--afterbegin-->${rawCode}<!--beforeend--></div><!--afterend-->`
-    );
-  };
+      return (
+        `<!--beforebegin--><div class="language-${token.info.trim()} extra-class">` +
+        `<!--afterbegin-->${rawCode}<!--beforeend--></div><!--afterend-->`
+      );
+    };
   const { fence, code_block: codeBlock } = md.renderer.rules;
   md.renderer.rules.fence = wrap(fence);
   md.renderer.rules.code_block = wrap(codeBlock);

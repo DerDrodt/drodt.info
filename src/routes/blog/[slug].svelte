@@ -1,16 +1,19 @@
 <script context="module" lang="ts">
-  import type { Preload } from "../../types/sapper";
+  import type { Load } from "./__types/[slug]";
+  import { dev, browser } from "$app/env";
 
-  export const preload: Preload = async function (this, { params, query }) {
-    // the `slug` parameter is available because
-    // this file is called [slug].svelte
-    const res = await this.fetch(`blog/${params.slug}.json`);
-    const data = await res.json();
+  export const load: Load = async function ({ fetch, params }) {
+    try {
+      const res = await fetch(`${params.slug}.json`);
+      const data = await res.json();
 
-    if (res.status === 200) {
-      return { post: data };
-    } else {
-      this.error(res.status, data.message);
+      if (res.status === 200) {
+        return { status: 200, props: { post: data } };
+      } else {
+        return { status: 500, error: data };
+      }
+    } catch (e) {
+      return { status: 500, error: e };
     }
   };
 </script>
@@ -22,12 +25,56 @@
   export let post: Post;
 
   function updateLang(lang: string) {
-    if ((process as any).browser)
-      document.documentElement.setAttribute("lang", lang);
+    if (browser) document.documentElement.setAttribute("lang", lang);
   }
 
   updateLang(post.metadata.lang);
 </script>
+
+<svelte:head>
+  <title>{post.metadata.title} | Drodt</title>
+
+  <meta name="twitter:title" content={post.metadata.title} />
+  <meta name="twitter:description" content={post.metadata.description} />
+  <meta name="Description" content={post.metadata.description} />
+</svelte:head>
+
+<article class="post listify">
+  {#if post.metadata.tags.length > 0}
+    <div class="tags">
+      {#each post.metadata.tags as tag}
+        <Tag name={tag} />
+      {/each}
+    </div>
+  {/if}
+  <h1>{post.metadata.title}</h1>
+  <p class="standfirst">{post.metadata.description}</p>
+
+  <p class="byline">
+    <time datetime={post.metadata.date}>{post.metadata.dateString}</time>
+    •
+    <span class="time-to-read">{post.metadata.timeToReadString}</span>
+  </p>
+  {#if dev}
+    <div
+      style="position: fixed; bottom: 16px; left: 16px; background-color: #fff; z-index: 999; padding: 8px; border-radius: 4px;"
+    >
+      {post.metadata.wordCount}
+      words |
+      {post.metadata.timeToRead}min
+    </div>
+  {/if}
+  {#if post.metadata.isDraft}
+    <div
+      style="position: fixed; bottom: 16px; right: 16px; background-color: #fff; z-index: 999; padding: 8px; border-radius: 4px; color: red;"
+    >
+      DRAFT
+    </div>
+  {/if}
+  <div class="content">
+    {@html post.html}
+  </div>
+</article>
 
 <style lang="scss">
   .post {
@@ -85,46 +132,3 @@
     }
   }
 </style>
-
-<svelte:head>
-  <title>{post.metadata.title} | Drodt</title>
-
-  <meta name="twitter:title" content={post.metadata.title} />
-  <meta name="twitter:description" content={post.metadata.description} />
-  <meta name="Description" content={post.metadata.description} />
-</svelte:head>
-
-<article class="post listify">
-  {#if post.metadata.tags.length > 0}
-    <div class="tags">
-      {#each post.metadata.tags as tag}
-        <Tag name={tag} />
-      {/each}
-    </div>
-  {/if}
-  <h1>{post.metadata.title}</h1>
-  <p class="standfirst">{post.metadata.description}</p>
-
-  <p class="byline">
-    <time datetime={post.metadata.date}>{post.metadata.dateString}</time>
-    •
-    <span class="time-to-read">{post.metadata.timeToReadString}</span>
-  </p>
-  {#if process.env.NODE_ENV === 'development'}
-    <div
-      style="position: fixed; bottom: 16px; left: 16px; background-color: #fff; z-index: 999; padding: 8px; border-radius: 4px;">
-      {post.metadata.wordCount}
-      words |
-      {post.metadata.timeToRead}min
-    </div>
-  {/if}
-  {#if post.metadata.isDraft}
-    <div
-      style="position: fixed; bottom: 16px; right: 16px; background-color: #fff; z-index: 999; padding: 8px; border-radius: 4px; color: red;">
-      DRAFT
-    </div>
-  {/if}
-  <div class="content">
-    {@html post.html}
-  </div>
-</article>

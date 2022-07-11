@@ -2,6 +2,22 @@
   export let segment: string | undefined;
 </script>
 
+<nav>
+  <ul>
+    <li>
+      <a aria-current={segment === "" ? "page" : undefined} href="/">home</a>
+    </li>
+
+    <li>
+      <a
+        rel="prefetch"
+        aria-current={segment === "blog" ? "page" : undefined}
+        href="/blog">blog</a
+      >
+    </li>
+  </ul>
+</nav>
+
 <style lang="scss">
   nav {
     font-weight: 300;
@@ -50,22 +66,3 @@
     }
   }
 </style>
-
-<nav>
-  <ul>
-    <li>
-      <a
-        aria-current={segment === undefined ? 'page' : undefined}
-        href=".">home</a>
-    </li>
-
-    <!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
-		     the blog data when we hover over the link or tap it on a touchscreen -->
-    <li>
-      <a
-        rel="prefetch"
-        aria-current={segment === 'blog' ? 'page' : undefined}
-        href="blog">blog</a>
-    </li>
-  </ul>
-</nav>

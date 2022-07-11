@@ -1,5 +1,4 @@
-import type { Request } from "polka";
-import type { ServerResponse } from "http";
+import type { RequestHandler } from "./__types/index";
 import feed from "./_feed";
 
 enum FeedType {
@@ -39,18 +38,25 @@ const getContentType = (type: FeedType): string => {
 
 const cache = new Map<FeedType, string>();
 
-export function get(req: Request, res: ServerResponse, next: () => void) {
-  const { type } = req.query;
-  if (type === undefined || !(typeof type === "string")) {
-    return next();
+const get: RequestHandler = ({ url }) => {
+  const ty = url.searchParams.get("type");
+
+  if (ty === undefined || !(typeof ty === "string")) {
+    return { status: 400, body: new Error(`Unknown feed type ${ty}`) };
   }
-  const feedType = getFeedType(type);
-  if (feedType === undefined) return next();
+
+  const feedType = getFeedType(ty);
+  if (feedType === undefined)
+    return { status: 400, body: new Error(`Unknown feed type ${ty}`) };
   if (!cache.has(feedType)) {
     cache.set(feedType, calculateFeed(feedType));
   }
-  res.writeHead(200, {
-    "Content-Type": getContentType(feedType),
-  });
-  res.end(cache.get(feedType));
-}
+
+  return {
+    status: 200,
+    headers: { "Content-Type": getContentType(feedType) },
+    body: cache.get(feedType),
+  };
+};
+
+export { get };

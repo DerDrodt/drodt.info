@@ -1,14 +1,13 @@
 <script context="module" lang="ts">
-  import type { Preload } from "../types/sapper";
-
-  export const preload: Preload = async function (this) {
-    const res = await this.fetch(`blog.json`);
+  import type { Load } from "./__types/index";
+  export const load: Load = async function ({ fetch }) {
+    const res = await fetch(`blog.json`);
     const data = await res.json();
 
     if (res.status === 200) {
-      return { latestPost: data[0] };
+      return { status: 200, props: { latestPost: data[0] } };
     } else {
-      this.error(res.status, data.message);
+      return { status: 500, error: data };
     }
   };
 </script>
@@ -16,8 +15,47 @@
 <script lang="ts">
   import type { Post } from "../types/post";
 
-  export let latestPost: Post;
+  export let latestPost: Post | undefined;
 </script>
+
+<svelte:head>
+  <title>Drodt.info</title>
+</svelte:head>
+
+<h1>Drodt.info</h1>
+
+<div class="face-container">
+  <img class="face" src="/pic.jpg" alt="My Face" />
+</div>
+
+<p>Welcome to my personal blog!</p>
+
+<p>
+  I am a student of Computer Science and Philosophy at Technische Universität
+  Darmstadt working towards his Master. My main focus of study seems to be
+  formal verification, but maybe that will change. Who knows?
+</p>
+
+<p>
+  On here I write about whatever interests me. This includes politics,
+  philosophy web development, computer science and open source software.
+</p>
+
+<p>
+  You can also follow me on
+  <a href="https://twitter.com/DerDrodtel">Twitter</a>
+  or
+  <a href="https://www.linkedin.com/in/daniel-drodt-95a960159/">LinkenIn</a>, if
+  you want.
+</p>
+
+{#if latestPost !== undefined}
+  <p>
+    My latest post is
+    <a href={`blog/${latestPost.slug}`}>{latestPost.metadata.title}</a>
+    {#if latestPost.metadata.lang === "de"}(in German){/if}
+  </p>
+{/if}
 
 <style lang="scss">
   h1 {
@@ -53,40 +91,3 @@
     }
   }
 </style>
-
-<svelte:head>
-  <title>Drodt.info</title>
-</svelte:head>
-
-<h1>Drodt.info</h1>
-
-<div class="face-container">
-  <img class="face" src="/pic.jpg" alt="My Face" />
-</div>
-
-<p>Welcome to my personal blog!</p>
-
-<p>
-  I am a student of Computer Science and Philosophy at Technische Universität
-  Darmstadt working towards his Master. My main focus of study seems to be
-  formal verification, but maybe that will change. Who knows?
-</p>
-
-<p>
-  On here I write about whatever interests me. This includes politics,
-  philosophy web development, computer science and open source software.
-</p>
-
-<p>
-  You can also follow me on
-  <a href="https://twitter.com/DerDrodtel">Twitter</a>
-  or
-  <a href="https://www.linkedin.com/in/daniel-drodt-95a960159/">LinkenIn</a>, if
-  you want.
-</p>
-
-<p>
-  My latest post is
-  <a href={`blog/${latestPost.slug}`}>{latestPost.metadata.title}</a>
-  {#if latestPost.metadata.lang === 'de'}(in German){/if}
-</p>

@@ -1,3 +1,4 @@
+import type { RequestHandler } from "./__types/index.json";
 import posts from "./_posts";
 
 const contents = JSON.stringify(
@@ -9,10 +10,12 @@ const contents = JSON.stringify(
   }),
 );
 
-export function get(req: any, res: any) {
-  res.writeHead(200, {
-    "Content-Type": "application/json",
-  });
+const get: RequestHandler = ({ params }) => {
+  return {
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+    body: contents,
+  };
+};
 
-  res.end(contents);
-}
+export { get };

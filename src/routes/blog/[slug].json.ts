@@ -1,4 +1,6 @@
+import type { Post } from "src/types/post";
 import posts from "./_posts";
+import type { RequestHandler } from "./__types/[slug].json";
 
 const lookup = new Map<string, string>();
 
@@ -6,26 +8,27 @@ posts().forEach((post) => {
   lookup.set(post.slug, JSON.stringify(post));
 });
 
-export function get(req: any, res: any, next: any) {
-  // the `slug` parameter is available because
-  // this file is called [slug].json.js
-  const { slug } = req.params;
-
+const get: RequestHandler = ({ params }) => {
+  const slug = params.slug;
   if (lookup.has(slug)) {
-    res.writeHead(200, {
-      "Content-Type": "application/json",
-    });
-
-    res.end(lookup.get(slug));
+    return {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: lookup.get(slug),
+    };
   } else {
-    res.writeHead(404, {
-      "Content-Type": "application/json",
-    });
-
-    res.end(
-      JSON.stringify({
+    return {
+      status: 404,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: {
         message: `Not found`,
-      }),
-    );
+      },
+    };
   }
-}
+};
+
+export { get };
