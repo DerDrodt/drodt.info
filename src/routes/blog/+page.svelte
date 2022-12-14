@@ -1,23 +1,7 @@
-<script context="module" lang="ts">
-  throw new Error("@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)");
-
-  // import type { Load } from "./$types";
-
-  // export const load: Load = async function ({ fetch, url }) {
-  //   const res = await fetch("blog.json");
-  //   const posts = await res.json();
-
-  //   return { status: 200, props: { posts, tag: url.searchParams.get("tag") } };
-  // };
-</script>
-
 <script lang="ts">
-  throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
-
+  import { PageData } from "./$types";
   import Tag from "../../components/Tag.svelte";
-  import type { Post } from "../../types/post";
-  export let posts: Post[];
-  export let tag: string | null;
+  export let data: PageData;
 </script>
 
 <svelte:head>
@@ -28,16 +12,16 @@
   <meta name="Description" content="Articles by Daniel Drodt" />
 </svelte:head>
 
-{#if tag !== null}
+{#if data.tag !== null}
   <p class="current-tag">
     Showing all articles for
-    <Tag name={tag} />
+    <Tag name={data.tag} />
     <a href="/blog">Show all</a>
   </p>
 {/if}
 
 <div class="posts stretch">
-  {#each posts.filter((p) => tag === null || p.metadata.tags.includes(tag)) as post}
+  {#each data.posts.filter((p) => data.tag === null || p.metadata.tags.includes(data.tag)) as post}
     <article class="post" data-pubdate={post.metadata.dateString}>
       <a
         class="no-underline"

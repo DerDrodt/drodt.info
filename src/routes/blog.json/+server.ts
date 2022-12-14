@@ -1,7 +1,3 @@
-throw new Error("@migration task: Update +server.js (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292701)");
-
-
-// @migration task: Check imports
 import type { RequestHandler } from "./$types";
 import posts from "./_posts";
 
@@ -15,11 +11,9 @@ const contents = JSON.stringify(
 );
 
 const get: RequestHandler = ({ params }) => {
-  return {
-    status: 200,
-    headers: { "Content-Type": "application/json" },
-    body: contents,
-  };
+  return new Response(contents, {
+    headers: { "Content-Type": "application/json; charset=utf-8" },
+  });
 };
 
 export { get };

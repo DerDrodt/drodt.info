@@ -1,31 +1,14 @@
-<script context="module">
-  throw new Error("@migration task: Replace error load function (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3293209)");
-
-  // export function load({ error, status }) {
-  //   return {
-  //     props: { error, status },
-  //   };
-  // }
-</script>
-
 <script>
-  import { dev } from "$app/env";
-  export let error, status;
-
-  console.log(error);
+  import { page } from "$app/stores";
 </script>
 
 <svelte:head>
-  <title>{status}</title>
+  <title>{$page.status}</title>
 </svelte:head>
 
-<h1>{status}</h1>
+<h1>{$page.status}</h1>
 
-<p>{error.message}</p>
-
-{#if dev && error.stack}
-  <pre>{error.stack}</pre>
-{/if}
+<p>{$page.error.message}</p>
 
 <style>
   h1,

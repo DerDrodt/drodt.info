@@ -1,5 +1,3 @@
-throw new Error("@migration task: Update +server.js (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292701)");
-
 import type { RequestHandler } from "./$types";
 import feed from "./_feed";
 
@@ -44,21 +42,23 @@ const get: RequestHandler = ({ url }) => {
   const ty = url.searchParams.get("type");
 
   if (ty === undefined || !(typeof ty === "string")) {
-    return { status: 400, body: new Error(`Unknown feed type ${ty}`) };
+    return new Response(JSON.stringify(new Error(`Unknown feed type ${ty}`)), {
+      status: 400,
+    });
   }
 
   const feedType = getFeedType(ty);
   if (feedType === undefined)
-    return { status: 400, body: new Error(`Unknown feed type ${ty}`) };
+    return new Response(JSON.stringify(new Error(`Unknown feed type ${ty}`)), {
+      status: 400,
+    });
   if (!cache.has(feedType)) {
     cache.set(feedType, calculateFeed(feedType));
   }
 
-  return {
-    status: 200,
+  return new Response(cache.get(feedType), {
     headers: { "Content-Type": getContentType(feedType) },
-    body: cache.get(feedType),
-  };
+  });
 };
 
 export { get };

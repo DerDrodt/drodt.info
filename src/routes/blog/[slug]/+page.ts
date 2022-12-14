@@ -1,5 +1,5 @@
-import type { PageLoad } from "../$types";
-import { dev, browser } from "$app/env";
+import type { PageLoad } from "./$types";
+import { error } from "@sveltejs/kit";
 
 export const load: PageLoad = async function ({ fetch, params }) {
   try {
@@ -9,11 +9,9 @@ export const load: PageLoad = async function ({ fetch, params }) {
     if (res.status === 200) {
       return { post: data };
     } else {
-      throw new Error("@migration task: Migrate this return statement (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292693)");
-      return { status: 500, error: data };
+      throw error(500, data);
     }
   } catch (e) {
-    throw new Error("@migration task: Migrate this return statement (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292693)");
-    return { status: 500, error: e };
+    throw error(500, e);
   }
 };

@@ -1,8 +1,5 @@
-throw new Error("@migration task: Update +server.js (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292701)");
-
-import type { Post } from "src/types/post";
 import posts from "../_posts";
-import type { RequestHandler } from "../$types";
+import type { RequestHandler } from "./$types";
 
 const lookup = new Map<string, string>();
 
@@ -13,23 +10,18 @@ posts().forEach((post) => {
 const get: RequestHandler = ({ params }) => {
   const slug = params.slug;
   if (lookup.has(slug)) {
-    return {
-      status: 200,
+    return new Response(lookup.get(slug), {
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json; charset=utf-8",
       },
-      body: lookup.get(slug),
-    };
+    });
   } else {
-    return {
+    return new Response("Not found", {
       status: 404,
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json; charset=utf-8",
       },
-      body: {
-        message: `Not found`,
-      },
-    };
+    });
   }
 };
 

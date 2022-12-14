@@ -1,74 +1,55 @@
-<script context="module" lang="ts">
-  throw new Error("@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)");
-
-  // import type { Load } from "../$types";
-  // import { dev, browser } from "$app/env";
-
-  // export const load: Load = async function ({ fetch, params }) {
-  //   try {
-  //     const res = await fetch(`${params.slug}.json`);
-  //     const data = await res.json();
-
-  //     if (res.status === 200) {
-  //       return { status: 200, props: { post: data } };
-  //     } else {
-  //       return { status: 500, error: data };
-  //     }
-  //   } catch (e) {
-  //     return { status: 500, error: e };
-  //   }
-  // };
-</script>
-
 <script lang="ts">
-  throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
+  import { dev, browser } from "$app/env";
+  import { PageData } from "./$types";
 
   import Tag from "../../../components/Tag.svelte";
   import type { Post } from "../../../types/post";
 
-  export let post: Post;
+  export let data: PageData;
 
   function updateLang(lang: string) {
     if (browser) document.documentElement.setAttribute("lang", lang);
   }
 
-  updateLang(post.metadata.lang);
+  updateLang(data.post.metadata.lang);
 </script>
 
 <svelte:head>
-  <title>{post.metadata.title} | Drodt</title>
+  <title>{data.post.metadata.title} | Drodt</title>
 
-  <meta name="twitter:title" content={post.metadata.title} />
-  <meta name="twitter:description" content={post.metadata.description} />
-  <meta name="Description" content={post.metadata.description} />
+  <meta name="twitter:title" content={data.post.metadata.title} />
+  <meta name="twitter:description" content={data.post.metadata.description} />
+  <meta name="Description" content={data.post.metadata.description} />
 </svelte:head>
 
 <article class="post listify">
-  {#if post.metadata.tags.length > 0}
+  {#if data.post.metadata.tags.length > 0}
     <div class="tags">
-      {#each post.metadata.tags as tag}
+      {#each data.post.metadata.tags as tag}
         <Tag name={tag} />
       {/each}
     </div>
   {/if}
-  <h1>{post.metadata.title}</h1>
-  <p class="standfirst">{post.metadata.description}</p>
+  <h1>{data.post.metadata.title}</h1>
+  <p class="standfirst">{data.post.metadata.description}</p>
 
   <p class="byline">
-    <time datetime={post.metadata.date}>{post.metadata.dateString}</time>
+    <time datetime={data.post.metadata.date}
+      >{data.post.metadata.dateString}</time
+    >
     •
-    <span class="time-to-read">{post.metadata.timeToReadString}</span>
+    <span class="time-to-read">{data.post.metadata.timeToReadString}</span>
   </p>
   {#if dev}
     <div
       style="position: fixed; bottom: 16px; left: 16px; background-color: #fff; z-index: 999; padding: 8px; border-radius: 4px;"
     >
-      {post.metadata.wordCount}
+      {data.post.metadata.wordCount}
       words |
-      {post.metadata.timeToRead}min
+      {data.post.metadata.timeToRead}min
     </div>
   {/if}
-  {#if post.metadata.isDraft}
+  {#if data.post.metadata.isDraft}
     <div
       style="position: fixed; bottom: 16px; right: 16px; background-color: #fff; z-index: 999; padding: 8px; border-radius: 4px; color: red;"
     >
@@ -76,7 +57,7 @@
     </div>
   {/if}
   <div class="content">
-    {@html post.html}
+    {@html data.post.html}
   </div>
 </article>
 

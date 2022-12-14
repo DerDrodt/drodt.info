@@ -1,25 +1,7 @@
-<script context="module" lang="ts">
-  throw new Error("@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)");
-
-  // import type { Load } from "./$types";
-  // export const load: Load = async function ({ fetch }) {
-  //   const res = await fetch(`blog.json`);
-  //   const data = await res.json();
-
-  //   if (res.status === 200) {
-  //     return { status: 200, props: { latestPost: data[0] } };
-  //   } else {
-  //     return { status: 500, error: data };
-  //   }
-  // };
-</script>
-
 <script lang="ts">
-  throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
+  import { PageData } from "./$types";
 
-  import type { Post } from "../types/post";
-
-  export let latestPost: Post | undefined;
+  export let data: PageData;
 </script>
 
 <svelte:head>
@@ -53,11 +35,12 @@
   you want.
 </p>
 
-{#if latestPost !== undefined}
+{#if data.latestPost !== undefined}
   <p>
     My latest post is
-    <a href={`blog/${latestPost.slug}`}>{latestPost.metadata.title}</a>
-    {#if latestPost.metadata.lang === "de"}(in German){/if}
+    <a href={`blog/${data.latestPost.slug}`}>{data.latestPost.metadata.title}</a
+    >
+    {#if data.latestPost.metadata.lang === "de"}(in German){/if}
   </p>
 {/if}
 
