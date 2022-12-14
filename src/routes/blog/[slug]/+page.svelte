@@ -1,26 +1,30 @@
 <script context="module" lang="ts">
-  import type { Load } from "./__types/[slug]";
-  import { dev, browser } from "$app/env";
+  throw new Error("@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)");
 
-  export const load: Load = async function ({ fetch, params }) {
-    try {
-      const res = await fetch(`${params.slug}.json`);
-      const data = await res.json();
+  // import type { Load } from "../$types";
+  // import { dev, browser } from "$app/env";
 
-      if (res.status === 200) {
-        return { status: 200, props: { post: data } };
-      } else {
-        return { status: 500, error: data };
-      }
-    } catch (e) {
-      return { status: 500, error: e };
-    }
-  };
+  // export const load: Load = async function ({ fetch, params }) {
+  //   try {
+  //     const res = await fetch(`${params.slug}.json`);
+  //     const data = await res.json();
+
+  //     if (res.status === 200) {
+  //       return { status: 200, props: { post: data } };
+  //     } else {
+  //       return { status: 500, error: data };
+  //     }
+  //   } catch (e) {
+  //     return { status: 500, error: e };
+  //   }
+  // };
 </script>
 
 <script lang="ts">
-  import Tag from "../../components/Tag.svelte";
-  import type { Post } from "../../types/post";
+  throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
+
+  import Tag from "../../../components/Tag.svelte";
+  import type { Post } from "../../../types/post";
 
   export let post: Post;
 

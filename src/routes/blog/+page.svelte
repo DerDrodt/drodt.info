@@ -1,15 +1,19 @@
 <script context="module" lang="ts">
-  import type { Load } from "./__types/index";
+  throw new Error("@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)");
 
-  export const load: Load = async function ({ fetch, url }) {
-    const res = await fetch("blog.json");
-    const posts = await res.json();
+  // import type { Load } from "./$types";
 
-    return { status: 200, props: { posts, tag: url.searchParams.get("tag") } };
-  };
+  // export const load: Load = async function ({ fetch, url }) {
+  //   const res = await fetch("blog.json");
+  //   const posts = await res.json();
+
+  //   return { status: 200, props: { posts, tag: url.searchParams.get("tag") } };
+  // };
 </script>
 
 <script lang="ts">
+  throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
+
   import Tag from "../../components/Tag.svelte";
   import type { Post } from "../../types/post";
   export let posts: Post[];

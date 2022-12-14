@@ -1,18 +1,22 @@
 <script context="module" lang="ts">
-  import type { Load } from "./__types/index";
-  export const load: Load = async function ({ fetch }) {
-    const res = await fetch(`blog.json`);
-    const data = await res.json();
+  throw new Error("@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)");
 
-    if (res.status === 200) {
-      return { status: 200, props: { latestPost: data[0] } };
-    } else {
-      return { status: 500, error: data };
-    }
-  };
+  // import type { Load } from "./$types";
+  // export const load: Load = async function ({ fetch }) {
+  //   const res = await fetch(`blog.json`);
+  //   const data = await res.json();
+
+  //   if (res.status === 200) {
+  //     return { status: 200, props: { latestPost: data[0] } };
+  //   } else {
+  //     return { status: 500, error: data };
+  //   }
+  // };
 </script>
 
 <script lang="ts">
+  throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
+
   import type { Post } from "../types/post";
 
   export let latestPost: Post | undefined;

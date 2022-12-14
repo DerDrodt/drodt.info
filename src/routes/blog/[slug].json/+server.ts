@@ -1,6 +1,8 @@
+throw new Error("@migration task: Update +server.js (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292701)");
+
 import type { Post } from "src/types/post";
-import posts from "./_posts";
-import type { RequestHandler } from "./__types/[slug].json";
+import posts from "../_posts";
+import type { RequestHandler } from "../$types";
 
 const lookup = new Map<string, string>();
 
