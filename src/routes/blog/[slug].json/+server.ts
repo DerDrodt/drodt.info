@@ -7,7 +7,7 @@ posts().forEach((post) => {
 	lookup.set(post.slug, JSON.stringify(post));
 });
 
-const get: RequestHandler = ({ params }) => {
+const GET: RequestHandler = ({ params }) => {
 	const slug = params.slug;
 	if (lookup.has(slug)) {
 		return new Response(lookup.get(slug), {
@@ -25,4 +25,4 @@ const get: RequestHandler = ({ params }) => {
 	}
 };
 
-export { get };
+export { GET };

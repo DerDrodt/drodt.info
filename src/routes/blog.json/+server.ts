@@ -10,10 +10,10 @@ const contents = JSON.stringify(
 	})
 );
 
-const get: RequestHandler = () => {
+const GET: RequestHandler = () => {
 	return new Response(contents, {
 		headers: { 'Content-Type': 'application/json; charset=utf-8' }
 	});
 };
 
-export { get };
+export { GET };

@@ -1,4 +1,4 @@
-:root {
+:global(:root) {
 	--side-page: 14vw;
 	--top-offset: 1rem;
 	--side-nav: 1rem;
@@ -24,23 +24,18 @@
 	--border-r: 0.2rem;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+:global(h1, h2, h3, h4, h5, h6) {
 	margin: 0 0 0.5em 0;
 	font-weight: 400;
 	line-height: 1.2;
 	font-size: 2em;
 }
 
-a {
+:global(a) {
 	color: inherit;
 }
 
-div[class*='language-'] {
+:global(div[class*='language-']) {
 	position: relative;
 	background-color: #282c34;
 	border-radius: 6px;
@@ -55,54 +50,52 @@ div[class*='language-'] {
 	}
 }
 
-code {
+:global(code) {
 	border-radius: 2px;
 	font-size: 0.9em;
 }
 
-pre {
+:global(pre) {
 	background: transparent;
 	position: relative;
 	z-index: 1;
 }
 
-pre[class*='language-'] {
+:global(pre[class*='language-']) {
 	background: transparent;
 	position: relative;
 	z-index: 1;
 }
 
-div[class~='language-js'] {
+:global(div[class~='language-js']) {
 	&::before {
 		content: 'js';
 	}
 }
 
-div[class~='language-abs'] {
+:global(div[class~='language-abs']) {
 	&::before {
 		content: 'abs';
 	}
 }
 
-div[class~='language-rabs'] {
+:global(div[class~='language-rabs']) {
 	&::before {
 		content: 'rabs';
 	}
 }
 
-div[class~='language-rust'] {
+:global(div[class~='language-rust']) {
 	&::before {
 		content: 'rust';
 	}
 }
 
-:global() {
-	.no-underline {
-		text-decoration: none;
-	}
+:global(.no-underline) {
+	 text-decoration: none;
 }
 
-blockquote {
+:global(blockquote) {
 	border-left: 3px solid #b2b2b7;
 	margin: 16px 32px 16px 0;
 	padding-left: 32px;
@@ -113,7 +106,7 @@ blockquote {
 	}
 }
 
-.header-anchor {
+:global(.header-anchor) {
 	position: absolute;
 	left: 24px;
 	text-decoration: none;
@@ -126,13 +119,13 @@ blockquote {
 }
 
 :hover {
-	> .header-anchor {
+	> :global(.header-anchor) {
 		opacity: 1;
 	}
 }
 
 @media (min-width: 800px) {
-	:root {
+	:global(:root) {
 		--side-nav: 2rem;
 	}
 }

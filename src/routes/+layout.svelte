@@ -22,9 +22,7 @@
 </main>
 
 <style lang="scss">
-	:global() {
-		@import '../style/global.scss';
-	}
+	@import '../style/global.scss';
 
 	main {
 		position: relative;

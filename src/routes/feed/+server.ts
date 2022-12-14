@@ -38,7 +38,7 @@ const getContentType = (type: FeedType): string => {
 
 const cache = new Map<FeedType, string>();
 
-const get: RequestHandler = ({ url }) => {
+const GET: RequestHandler = ({ url }) => {
 	const ty = url.searchParams.get('type');
 
 	if (ty === undefined || !(typeof ty === 'string')) {
@@ -61,4 +61,4 @@ const get: RequestHandler = ({ url }) => {
 	});
 };
 
-export { get };
+export { GET };
