@@ -1,16 +1,16 @@
 body {
-  margin: 0;
-  font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  font-size: 14px;
-  line-height: 1.5;
-  color: #333;
+	margin: 0;
+	font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell,
+		Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	font-size: 14px;
+	line-height: 1.5;
+	color: #333;
 
-  --font-mono: "Fira Mono", monospace;
+	--font-mono: 'Fira Mono', monospace;
 }
 
 @media (min-width: 400px) {
-  body {
-    font-size: 16px;
-  }
+	body {
+		font-size: 16px;
+	}
 }

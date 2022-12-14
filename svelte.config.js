@@ -1,12 +1,16 @@
-const sveltePreprocess = require('svelte-preprocess');
+import { vitePreprocess } from '@sveltejs/kit/vite';
+import netlify from '@sveltejs/adapter-netlify';
 
-module.exports = {
-  preprocess: sveltePreprocess({
-    scss: {
-      includePaths: ['src'],
-    },
-    postcss: {
-      plugins: [require('autoprefixer')],
-    },
-  }),
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
+	kit: {
+		adapter: netlify(),
+		alias: {
+			types: 'src/types',
+			comps: 'src/components'
+		}
+	},
+	preprocess: [vitePreprocess()]
 };
+
+export default config;

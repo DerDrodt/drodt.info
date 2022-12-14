@@ -1,0 +1,7 @@
+[build]
+  command = "yarn build"
+  publish = "build"
+
+[functions]
+  # Includes all Markdown files inside the "files/" directory.
+  included_files = ["content/blog/*.md"]
