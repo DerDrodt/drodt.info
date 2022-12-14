@@ -1,5 +1,5 @@
 import type { RequestHandler } from './$types';
-import feed from './_feed';
+import feed from '$lib/gen-feed';
 
 enum FeedType {
 	Rss,

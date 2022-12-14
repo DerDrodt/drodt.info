@@ -2,7 +2,7 @@
 	import { dev, browser } from '$app/environment';
 	import type { PageData } from './$types';
 
-	import Tag from '../../../components/Tag.svelte';
+	import Tag from 'comps/Tag.svelte';
 
 	export let data: PageData;
 

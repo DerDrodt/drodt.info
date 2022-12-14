@@ -1,4 +1,4 @@
-import posts from '../_posts';
+import posts from '$lib/gen-posts';
 import type { RequestHandler } from './$types';
 
 const lookup = new Map<string, string>();

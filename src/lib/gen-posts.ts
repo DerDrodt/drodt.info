@@ -3,10 +3,10 @@ import path from 'path';
 import mdIt from 'markdown-it';
 import footNote from 'markdown-it-footnote';
 import anchor from 'markdown-it-anchor';
-import { extractFrontmatter } from '../../util/markdown';
-import type { Post } from '../../types/post';
-import { formatTimeToRead, timeToRead as estimateTimeToRead } from '../../util/time-to-read';
-import { addABS, addRABS } from '../../util/abs-prism';
+import { extractFrontmatter } from './markdown';
+import type { Post } from 'types/post';
+import { formatTimeToRead, timeToRead as estimateTimeToRead } from './time-to-read';
+import { addABS, addRABS } from './abs-prism';
 import PrismJS from 'prismjs';
 import { dev } from '$app/environment';
 

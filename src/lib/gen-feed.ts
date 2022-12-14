@@ -1,5 +1,5 @@
 import { Feed } from 'feed';
-import posts from '../blog/_posts';
+import posts from './gen-posts';
 
 const feed = new Feed({
 	title: 'Drodt.info Feed',

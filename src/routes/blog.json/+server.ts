@@ -1,5 +1,5 @@
 import type { RequestHandler } from './$types';
-import posts from '../blog/_posts';
+import posts from '$lib/gen-posts';
 
 const contents = JSON.stringify(
 	posts().map((post) => {
