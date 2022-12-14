@@ -1,20 +1,12 @@
-import sveltePreprocess from "svelte-preprocess";
-import autoprefixer from "autoprefixer";
-import netlify from "@sveltejs/adapter-netlify";
+import { vitePreprocess } from '@sveltejs/kit/vite';
+import netlify from '@sveltejs/adapter-netlify';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  kit: {
-    adapter: netlify(),
-  },
-  preprocess: sveltePreprocess({
-    scss: {
-      includePaths: ["src"],
-    },
-    postcss: {
-      plugins: [autoprefixer],
-    },
-  }),
+	kit: {
+		adapter: netlify()
+	},
+	preprocess: [vitePreprocess()]
 };
 
 export default config;
