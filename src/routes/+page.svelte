@@ -31,7 +31,7 @@
 	You can also follow me on
 	<a href="https://twitter.com/DerDrodtel">Twitter</a>
 	or
-	<a href="https://www.linkedin.com/in/daniel-drodt-95a960159/">LinkenIn</a>, if you want.
+	<a href="https://www.linkedin.com/in/daniel-drodt-95a960159/">LinkedIn</a>, if you want.
 </p>
 
 {#if data.latestPost !== undefined}

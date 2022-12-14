@@ -92,7 +92,7 @@
 }
 
 :global(.no-underline) {
-	 text-decoration: none;
+	text-decoration: none;
 }
 
 :global(blockquote) {
@@ -107,13 +107,18 @@
 }
 
 :global(.header-anchor) {
-	position: absolute;
-	left: 24px;
 	text-decoration: none;
-	opacity: 0;
-	transition: opacity 0.2s ease-out;
 
-	&:hover {
+	&::before {
+		position: absolute;
+		left: 32px;
+		text-decoration: none;
+		opacity: 0;
+		transition: opacity 0.2s ease-out;
+		content: '#';
+	}
+
+	&:hover::before {
 		opacity: 1;
 	}
 }
