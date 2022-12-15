@@ -1,10 +1,10 @@
 import { vitePreprocess } from '@sveltejs/kit/vite';
-import vercel from '@sveltejs/adapter-vercel';
+import adapter from '@sveltejs/adapter-netlify';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-		adapter: vercel(),
+		adapter: adapter(),
 		alias: {
 			types: 'src/types',
 			comps: 'src/components'
