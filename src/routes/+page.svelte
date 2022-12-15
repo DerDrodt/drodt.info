@@ -23,8 +23,8 @@
 </p>
 
 <p>
-	On here I write about whatever interests me. This includes politics, philosophy web development,
-	computer science and open source software.
+	On here I write about whatever interests me. This includes politics, philosophy, web development,
+	computer science, and open source software.
 </p>
 
 <p>
