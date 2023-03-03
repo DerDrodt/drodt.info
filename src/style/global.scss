@@ -35,7 +35,7 @@
 	color: inherit;
 }
 
-:global(div[class*='language-']) {
+:global(pre[class*='language-']) {
 	position: relative;
 	background-color: #282c34;
 	border-radius: 6px;
@@ -55,19 +55,19 @@
 	font-size: 0.9em;
 }
 
-:global(pre) {
+/* :global(pre) {
 	background: transparent;
 	position: relative;
 	z-index: 1;
-}
+} */
 
-:global(pre[class*='language-']) {
+/* :global(pre[class*='language-']) {
 	background: transparent;
 	position: relative;
 	z-index: 1;
-}
+} */
 
-:global(div[class~='language-js']) {
+:global(pre[class~='language-js']) {
 	&::before {
 		content: 'js';
 	}
@@ -85,7 +85,7 @@
 	}
 }
 
-:global(div[class~='language-rust']) {
+:global(pre[class~='language-rust']) {
 	&::before {
 		content: 'rust';
 	}
