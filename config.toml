@@ -1,0 +1,51 @@
+# The URL the site will be built for
+base_url = "https://drodt.info"
+
+title = "Drodt.info"
+
+default_language = "en"
+
+generate_feed = true
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = true
+
+theme = "papermod"
+
+author = "Daniel Drodt"
+
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
+render_emoji = true
+external_links_target_blank = true
+external_links_no_follow = true
+external_links_no_referrer = true
+smart_punctuation = true
+highlight_theme = "OneHalfDark"
+
+[extra]
+# Put all your custom variables here
+
+[extra.papermod]
+default_theme = "dark"
+theme = "dark"
+title = "Drodt.info"
+show_theme_toggle = true
+show_scroll_to_top = true
+show_code_copy_buttons = true
+show_reading_time = true
+show_word_count = true
+show_post_nav_links = true
+show_post_meta = true
+default_toc_open = false
+language_direction = "ltr"
+home_title = "Drodt"
+home_content = "Welcome to a my page."
+keywords = ["computer science", "philosphy", "politics"]
+social_icons = []
+date_format = "%Y-%m-%d"

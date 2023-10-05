@@ -1,0 +1,6 @@
+[submodule "content/blog/themes/papermod"]
+	path = content/blog/themes/papermod
+	url = https://github.com/cydave/zola-theme-papermod
+[submodule "themes/papermod"]
+	path = themes/papermod
+	url = https://github.com/cydave/zola-theme-papermod
