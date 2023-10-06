@@ -3,6 +3,7 @@ title = "Kommentar zu \"Hart aber fair\" vom 05.10.2020"
 description = "Die Diskussionsrunde im ARD zum Thema \"Streit um die Sprache; Was darf man noch sagen und was besser nicht?\" ließ viele Aspekte der Diskussion um Sprache auf dem Tisch."
 lang = "de"
 date = 2023-10-03
+draft = true
 
 [taxonomies]
 tags = ["Politics"]

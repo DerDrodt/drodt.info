@@ -2,6 +2,7 @@
 title = "Redesigning ABS"
 description = "How can a language such as ABS, specifically designed to be analyzed, be improved? What effect does the type system have on verifiability? What mistakes were made in this regard with ABS?"
 date = 2023-10-05
+draft = true
 
 [taxonomies]
 tags = ["Computer Science"]
