@@ -17,6 +17,8 @@ theme = "papermod"
 
 author = "Daniel Drodt"
 
+taxonomies = [{ name = "tags", feed = true }]
+
 [markdown]
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
@@ -44,8 +46,15 @@ show_post_nav_links = true
 show_post_meta = true
 default_toc_open = false
 language_direction = "ltr"
-home_title = "Drodt"
-home_content = "Welcome to a my page."
+home_title = "Welcome to Drodt.info"
+home_content = "Welcome to my page."
 keywords = ["computer science", "philosphy", "politics"]
-social_icons = []
+social_icons = [
+    { url = "https://github.com/DerDrodt", title = "GitHub", icon = "github" },
+    { url = "https://twitter.com/DerDrodtel", title = "Twitter", icon = "twitter" },
+]
 date_format = "%Y-%m-%d"
+navigation = [
+    { url = "$BASE_URL/blog", title = "Blog" },
+    { url = "$BASE_URL/tags", title = "Tags" },
+]

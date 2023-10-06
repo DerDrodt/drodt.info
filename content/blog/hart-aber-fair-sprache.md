@@ -1,9 +1,11 @@
 +++
 title = "Kommentar zu \"Hart aber fair\" vom 05.10.2020"
 description = "Die Diskussionsrunde im ARD zum Thema \"Streit um die Sprache; Was darf man noch sagen und was besser nicht?\" ließ viele Aspekte der Diskussion um Sprache auf dem Tisch."
-tags = ["Hart aber fair", "Cancel Culture", "Political Correctness"]
 lang = "de"
-date = "2023-10-03"
+date = 2023-10-03
+
+[taxonomies]
+tags = ["Politics"]
 +++
 
 Wenn man die neueste Diskussionsrunde von "Hart aber fair"[^source] in einem Wort zusammenfassen müsste, würde man wohl _unfokussiert_ wählen. Es ging schlicht um zu viele verschiedene Themen: Cancel Culture, politische Korrektheit, Rassismus, Feminismus, etc. Jedes dieser Themen könnte dutzende Diskussionsrunden bieten, ohne je an einem "Ende" der Diskussion anzukommen. Diese bunte Mischung an Themen -- lose zusammen gebunden mit dem Thema _Sprache_ -- sorgt für wilde Sprünge in der Diskussion, für Unterbrechungen und dafür dass kein Thema angemessen diskutiert werden kann.
