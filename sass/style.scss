@@ -1,0 +1,14 @@
+.face-container {
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  margin-bottom: 16px;
+
+  .face {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    border: 4px #fff solid;
+    box-shadow: #00000059 0 5px 15px;
+  }
+}
