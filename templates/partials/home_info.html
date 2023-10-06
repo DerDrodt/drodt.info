@@ -3,41 +3,18 @@ resize_image(path="/face.jpg", width=200, height=200) %}
 
 <article class="first-entry home-info">
   <header class="entry-header">
-    <h1>Welcome to Drodt.info!</h1>
+    <h1>{{ trans(key="welcome", lang=lang) }}</h1>
   </header>
   <div class="entry-content">
     {% block home_entry_content %}
     <div class="face-container">
       <img src="{{ face.url }}" alt="My face" class="face" />
     </div>
-    <p>
-      I am a reasearch assistant of Computer Science at Technische Universität
-      Darmstadt working towards his PhD. My main focus of study seems to be
-      formal verification of Rust, but maybe that will change. Who knows?
-    </p>
+    <p>{{ trans(key="welcome_desc", lang=lang) }}</p>
 
-    <p>
-      On here I write about whatever interests me. This includes politics,
-      philosophy, web development, computer science, and open source software.
-    </p>
+    <p>{{ trans(key="welcome_topics", lang=lang) }}</p>
 
-    <p>
-      You can also follow me on
-      <a
-        href="https://twitter.com/DerDrodtel"
-        rel="noopener nofollow noreferrer"
-        target="_blank"
-        >Twitter</a
-      >
-      or
-      <a
-        href="https://www.linkedin.com/in/daniel-drodt-95a960159/"
-        rel="noopener nofollow noreferrer"
-        target="_blank"
-        >LinkedIn</a
-      >, if you want.
-    </p>
-    {% endblock %}
+    {{ trans(key="welcome_follow", lang=lang) | markdown | safe}} {% endblock %}
   </div>
   <footer class="entry-footer">
     {% include "partials/social_icons.html" %}

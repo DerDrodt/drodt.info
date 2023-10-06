@@ -1,5 +1,6 @@
-{% set posts = get_section(path="blog/_index.md") %} {% for page in posts.pages
-| slice(end=10) %}
+{% if lang == config.default_language %} {% set path = "blog/_index.md" %} {%
+else %} {% set path = "blog/_index." ~ lang ~ ".md" %} {%endif %} {% set posts =
+get_section(path=path) %} {% for page in posts.pages | slice(end=10) %}
 <article class="post-entry">
   <header class="entry-header">
     <h2>{{ page.title }}</h2>
