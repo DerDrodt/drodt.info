@@ -1,20 +1,64 @@
 .face-container {
-  display: flex;
-  justify-content: center;
-  padding: 8px;
-  margin-bottom: 16px;
+	display: flex;
+	justify-content: center;
+	padding: 8px;
+	margin-bottom: 16px;
 
-  .face {
-    width: 200px;
-    height: 200px;
-    border-radius: 100px;
-    border: 4px #fff solid;
-    box-shadow: #00000059 0 5px 15px;
-  }
+	.face {
+		width: 200px;
+		height: 200px;
+		border-radius: 100px;
+		border: 4px #fff solid;
+		box-shadow: #00000059 0 5px 15px;
+	}
 }
 
 .footnote-definition {
-  p {
-    display: inline;
-  }
+	p {
+		display: inline;
+	}
+}
+
+pre {
+	&[class*="language-"] {
+		&::before {
+			position: absolute;
+			z-index: 3;
+			top: 0.8em;
+			right: 1em;
+			font-size: 0.75rem;
+			color: hsla(0, 0%, 100%, 0.4);
+			transition: opacity 0.25s;
+		}
+
+		&:hover {
+			&::before {
+				opacity: 0;
+			}
+		}
+	}
+
+	&.language-js {
+		&::before {
+			content: "js";
+		}
+	}
+
+	&.language-abs {
+		&::before {
+			content: "abs";
+		}
+	}
+
+	&.language-rust {
+		&::before {
+			content: "rust";
+		}
+	}
+
+	&.language-rabs {
+		&::before {
+			content: "rabs";
+		}
+	}
 }
