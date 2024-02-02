@@ -1,0 +1,78 @@
+base_url = "https://drodt.info"
+
+title = "Drodt.info"
+
+default_language = "en"
+
+generate_feed = true
+
+compile_sass = true
+
+build_search_index = true
+
+theme = "papermod"
+
+author = "Daniel Drodt"
+
+taxonomies = [{ name = "tags", feed = true }]
+
+[markdown]
+highlight_code = true
+render_emoji = true
+external_links_target_blank = true
+external_links_no_follow = true
+external_links_no_referrer = true
+smart_punctuation = true
+highlight_theme = "OneHalfDark"
+
+[translations]
+welcome = "Welcome to Drodt.info!"
+welcome_desc = "I am a reasearch assistant of Computer Science at Technische Universität Darmstadt working towards his PhD. My main focus of study seems to be formal verification of Rust, but maybe that will change. Who knows?"
+welcome_topics = "On here I write about whatever interests me. This includes politics, philosophy, web development, computer science, and open source software."
+welcome_follow = "You can also follow me on [Twitter](https://twitter.com/DerDrodtel) or [LinkedIn](https://www.linkedin.com/in/daniel-drodt-95a960159/), if you want."
+words = "words"
+flag = "🇺🇸"
+toc = "Table of Contents"
+
+[languages.de]
+generate_feed = true
+build_search_index = true
+taxonomies = [{ name = "tags", feed = true }]
+
+[languages.de.translations]
+welcome = "Willkommen bei Drodt.info!"
+welcome_desc = "Ich bin ein wissenschaftlicher Mitarbeiter an der Technischen Universität Darmstadt und arbeite auf meine Promotion hin. Mein Fokus liegt im Moment auf der formalen Verifikation von Rust, aber vielleicht wird das das noch ändern."
+welcome_topics = "Hier schreibe ich über alles, was mich interessiert. Dazu gehört Politik, Philosphie, Web-Entwicklung, Informatik und Open Source Software."
+welcome_follow = "Du kannst mir auch auf [Twitter](https://twitter.com/DerDrodtel) oder [LinkedIn](https://www.linkedin.com/in/daniel-drodt-95a960159/) folgen, falls du möchtest."
+words = "Wörter"
+flag = "🇩🇪"
+toc = "Inhaltsverzeichnis"
+
+[extra]
+# Put all your custom variables here
+
+[extra.papermod]
+default_theme = "dark"
+theme = "dark"
+title = "Drodt.info"
+show_theme_toggle = true
+show_scroll_to_top = true
+show_code_copy_buttons = true
+show_reading_time = true
+show_word_count = true
+show_post_nav_links = true
+show_post_meta = true
+default_toc_open = false
+language_direction = "ltr"
+home_title = "Welcome to Drodt.info"
+home_content = "Welcome to my page."
+keywords = ["computer science", "philosphy", "politics"]
+social_icons = [
+    { url = "https://github.com/DerDrodt", title = "GitHub", icon = "github" },
+    { url = "https://twitter.com/DerDrodtel", title = "Twitter", icon = "twitter" },
+]
+date_format = "%Y-%m-%d"
+navigation = [
+    { url = "$BASE_URL/$LANG/blog", title = "Blog" },
+    { url = "$BASE_URL/$LANG/tags", title = "Tags" },
+]

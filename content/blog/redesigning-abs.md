@@ -1,8 +1,12 @@
----
-title: Redesigning ABS
-description: How can a language such as ABS, specifically designed to be analyzed, be improved? What effect does the type system have on verifiability? What mistakes were made in this regard with ABS?
-tags: Computer Science, Language Design, ABS, Type System
----
++++
+title = "Redesigning ABS"
+description = "How can a language such as ABS, specifically designed to be analyzed, be improved? What effect does the type system have on verifiability? What mistakes were made in this regard with ABS?"
+date = 2023-10-05
+draft = true
+
+[taxonomies]
+tags = ["Computer Science"]
++++
 
 Recently, I was tasked to implement multiple extensions and analyses of ABS in the compiler as part of my bachelor's thesis. The goal was to reduce the effort necessary to prove properties of ABS models and analyze them easier. How successful this was, and how it was achieved can be read in my Bachelor thesis. This post aims to add some general thoughts on the design of ABS and some of the errors I see, that harm further analysis of ABS.
 
@@ -54,9 +58,9 @@ Due to this difference, many developers may be reluctant to use abstract data ty
 
 Another effect of the design of abstract data types is the lack of modularity and encapsulation. All parts of an abstract data type are always public and functions can be spread throughout the entire model. As a result, any change to the abstract data type may break all functions using it and all dependent code. For most languages, this limitation would be critical. However, ABS is not concerned with such high-level problems of code management, as can be discerned from the lack of package management. This is, therefore, more of an annoyance than a severe problem, but we might still consider eliminating or alleviating it.
 
-My proposal for a better interaction between interfaces and abstract data types is **not** a change in syntax or the addition of a feature. Instead, i propose eliminating the distinction entirely. Rather than relying in a mixture of weaker Java-interfaces and clumsy Haskell-functions, we would rely on _structs_ and _enums_, as implemented in Rust --- in fact, borrowing aspects from Rust while simplifying and adapting them will be the main approach taken in this article. Rust, in my opinion, is an excellently designed language ([and many developers seem to agree](https://www.techjuice.pk/stack-overflow-developer-survey-2020-rust-is-the-most-loved-programming-language-vba-the-most-dreaded/)). It's features also seem to lend themselves well for analysis and verification.^[One might argue that this is shown by the amount of analysis provided by the compiler. The borrow-checker alone presents an immense example. There is also ongoing work for [verification in Rust](https://rust-lang-nursery.github.io/wg-verification/).]
+My proposal for a better interaction between interfaces and abstract data types is **not** a change in syntax or the addition of a feature. Instead, i propose eliminating the distinction entirely. Rather than relying in a mixture of weaker Java-interfaces and clumsy Haskell-functions, we would rely on _structs_ and _enums_, as implemented in Rust --- in fact, borrowing aspects from Rust while simplifying and adapting them will be the main approach taken in this article. Rust, in my opinion, is an excellently designed language ([and many developers seem to agree](https://www.techjuice.pk/stack-overflow-developer-survey-2020-rust-is-the-most-loved-programming-language-vba-the-most-dreaded/)). It's features also seem to lend themselves well for analysis and verification.[^borrowck]
 
-Structs in Rust provide an excellent alternative to interfaces. They definition of fields _only_ contains the definition of the fields, clearly showing the data of a struct. Functionality is then contained in implementation-blocks. This keeps a clear distinction between data and methods. A simple example is below:^[Rust examples taken from the excellent [Rust book](https://doc.rust-lang.org/book/title-page.html). Types like `i32` or `u32` are Rust's version of `Int`. Being a systems language, Rust allows us to be more specific regarding the size of integers. This would be unnecessary for a language such as ABS.]
+Structs in Rust provide an excellent alternative to interfaces. They definition of fields _only_ contains the definition of the fields, clearly showing the data of a struct. Functionality is then contained in implementation-blocks. This keeps a clear distinction between data and methods. A simple example is below:[^book]
 
 ```rust
 struct Rectangle {
@@ -262,3 +266,7 @@ impl B {
 ```
 
 Other extensions for location types, as discussed in my thesis, can be included, but this covers the most important cases.
+
+[^borrowck]: One might argue that this is shown by the amount of analysis provided by the compiler. The borrow-checker alone presents an immense example. There is also ongoing work for [verification in Rust](https://rust-lang-nursery.github.io/wg-verification/).
+
+[^book]: Rust examples taken from the excellent [Rust book](https://doc.rust-lang.org/book/title-page.html). Types like `i32` or `u32` are Rust's version of `Int`. Being a systems language, Rust allows us to be more specific regarding the size of integers. This would be unnecessary for a language such as ABS.

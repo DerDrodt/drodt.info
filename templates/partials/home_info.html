@@ -1,0 +1,22 @@
+{% import "macros/social_icon.svg.html" as macro_social -%} {% set face =
+resize_image(path="/face.jpg", width=200, height=200) %}
+
+<article class="first-entry home-info">
+  <header class="entry-header">
+    <h1>{{ trans(key="welcome", lang=lang) }}</h1>
+  </header>
+  <div class="entry-content">
+    {% block home_entry_content %}
+    <div class="face-container">
+      <img src="{{ face.url }}" alt="My face" class="face" />
+    </div>
+    <p>{{ trans(key="welcome_desc", lang=lang) }}</p>
+
+    <p>{{ trans(key="welcome_topics", lang=lang) }}</p>
+
+    {{ trans(key="welcome_follow", lang=lang) | markdown | safe}} {% endblock %}
+  </div>
+  <footer class="entry-footer">
+    {% include "partials/social_icons.html" %}
+  </footer>
+</article>
