@@ -4,7 +4,7 @@ title = "Drodt.info"
 
 default_language = "en"
 
-generate_feed = true
+generate_feeds = true
 
 compile_sass = true
 
@@ -24,6 +24,7 @@ external_links_no_follow = true
 external_links_no_referrer = true
 smart_punctuation = true
 highlight_theme = "OneHalfDark"
+bottom_footnotes = true
 
 [translations]
 welcome = "Welcome to Drodt.info!"
@@ -35,7 +36,7 @@ flag = "🇺🇸"
 toc = "Table of Contents"
 
 [languages.de]
-generate_feed = true
+generate_feeds = true
 build_search_index = true
 taxonomies = [{ name = "tags", feed = true }]
 
@@ -70,6 +71,7 @@ keywords = ["computer science", "philosphy", "politics"]
 social_icons = [
     { url = "https://github.com/DerDrodt", title = "GitHub", icon = "github" },
     { url = "https://twitter.com/DerDrodtel", title = "Twitter", icon = "twitter" },
+    { url = "$BASE_URL/atom.xml", title = "Atom", icon = "rss" },
 ]
 date_format = "%Y-%m-%d"
 navigation = [
