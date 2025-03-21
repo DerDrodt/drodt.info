@@ -28,12 +28,13 @@ bottom_footnotes = true
 
 [translations]
 welcome = "Welcome to Drodt.info!"
-welcome_desc = "I am a reasearch assistant of Computer Science at Technische Universität Darmstadt working towards his PhD. My main focus of study seems to be formal verification of Rust, but maybe that will change. Who knows?"
+welcome_desc = "I am a reasearch assistant of Computer Science at the Technical University of Darmstadt working towards his PhD. My main focus of study seems to be formal verification of Rust, but maybe that will change. Who knows?"
 welcome_topics = "On here I write about whatever interests me. This includes politics, philosophy, web development, computer science, and open source software."
 welcome_follow = "You can also follow me on [Twitter](https://twitter.com/DerDrodtel) or [LinkedIn](https://www.linkedin.com/in/daniel-drodt-95a960159/), if you want."
 words = "words"
 flag = "🇺🇸"
 toc = "Table of Contents"
+pubs_title = "Scientific Publications"
 
 [languages.de]
 generate_feeds = true
@@ -48,6 +49,7 @@ welcome_follow = "Du kannst mir auch auf [Twitter](https://twitter.com/DerDrodte
 words = "Wörter"
 flag = "🇩🇪"
 toc = "Inhaltsverzeichnis"
+pubs_title = "Wissenschaftliche Veröffentlichungen"
 
 [extra]
 # Put all your custom variables here
@@ -77,4 +79,5 @@ date_format = "%Y-%m-%d"
 navigation = [
     { url = "$BASE_URL/$LANG/blog", title = "Blog" },
     { url = "$BASE_URL/$LANG/tags", title = "Tags" },
+    { url = "$BASE_URL/$LANG/publications", title = "Publications" },
 ]
