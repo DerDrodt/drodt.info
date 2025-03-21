@@ -1,6 +1,10 @@
 {% extends "index.html" %} {% block main %}
 <article class="post-single">
   <header class="post-header">
+    {% if page.relative_path == "publications.md" or page.relative_path ==
+    "publications.de.md" %}
+    <h1 class="post-title">{{ trans(key="pubs_title", lang=lang) }}</h1>
+    {% else %}
     <div class="breadcrumbs">
       <a href="{{ config.base_url }}">Home</a>&nbsp;»&nbsp;
       <a href="{{ get_url(path='@/blog/_index.md') }}">Blog</a>&nbsp;»&nbsp;
@@ -12,7 +16,7 @@
     {% endif %} {% if config.extra.papermod.show_post_meta | default(value=true)
     %}
     <div class="post-meta">{% include "partials/post_meta.html" %}</div>
-    {% endif %}
+    {% endif %} {% endif %}
   </header>
 
   {% if config.extra.papermod.show_toc | default(value=true) %} {% include
