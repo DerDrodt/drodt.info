@@ -43,7 +43,7 @@ taxonomies = [{ name = "tags", feed = true }]
 
 [languages.de.translations]
 welcome = "Willkommen bei Drodt.info!"
-welcome_desc = "Ich bin ein wissenschaftlicher Mitarbeiter an der Technischen Universität Darmstadt und arbeite auf meine Promotion hin. Mein Fokus liegt im Moment auf der formalen Verifikation von Rust, aber vielleicht wird das das noch ändern."
+welcome_desc = "Ich bin wissenschaftlicher Mitarbeiter an der Technischen Universität Darmstadt und arbeite auf meine Promotion hin. Mein Fokus liegt im Moment auf der formalen Verifikation von Rust, aber vielleicht wird sich das noch ändern."
 welcome_topics = "Hier schreibe ich über alles, was mich interessiert. Dazu gehört Politik, Philosphie, Web-Entwicklung, Informatik und Open Source Software."
 welcome_follow = "Du kannst mir auch auf [Twitter](https://twitter.com/DerDrodtel) oder [LinkedIn](https://www.linkedin.com/in/daniel-drodt-95a960159/) folgen, falls du möchtest."
 words = "Wörter"
