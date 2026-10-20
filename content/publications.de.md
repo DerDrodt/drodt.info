@@ -11,6 +11,6 @@ date = "2026-10-20"
 - **Daniel Drodt** und Reiner Hähnle, „RustyDL: A program logic for Rust“, in Proc. 27th Intl. Symp. on Formal Methods, Tokyo, Japan, Part I, A. Sampaio, M. Stoelinga, A. D. Brucker, und M.-C. Jakobs, Hrsg., in LNCS, no. 16556. Cham: Springer, Mai 2026, S. 357–377. {{ doi(doi="10.1007/978-3-032-26204-2_19") }}.
 - **Daniel Drodt** und Reiner Hähnle, „RustyDL: A program logic for Rust“, Technical report, 2026. {{ doi(doi="https://doi.org/10.48550/arXiv.2602.22075") }}.
 
-## 2024 
+## 2025
 
 - Bernhard Beckert, Richard Bubel, **Daniel Drodt**, Reiner Hähnle, Florian Lanzinger, Wolfram Pfeifer, Mattias Ulbrich und Alexander Weigl, „The Java Verification Tool KeY: A Tutorial,“ in _Formal Methods_, A. Platzer, K. Y. Rozier, M. Pradella und M. Rossi, Hrsg., in LNCS, no. 14934, Cham: Springer Nature Switzerland, 2025, S. 597–623. {{ doi(doi="10.1007/978-3-031-71177-0_32") }}
