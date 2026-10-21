@@ -1,64 +1,114 @@
-.face-container {
-	display: flex;
-	justify-content: center;
-	padding: 8px;
-	margin-bottom: 16px;
+:root {
+  --gap: 24px;
+  --radius: 8px;
+}
 
-	.face {
-		width: 200px;
-		height: 200px;
-		border-radius: 100px;
-		border: 4px #fff solid;
-		box-shadow: #00000059 0 5px 15px;
-	}
+.face-container {
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  margin-bottom: 16px;
+
+  .face {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    border: 4px #fff solid;
+    box-shadow: #00000059 0 5px 15px;
+  }
 }
 
 .footnote-definition {
-	p {
-		display: inline;
-	}
+  p {
+    display: inline;
+  }
 }
 
 pre {
-	&[class*="language-"] {
-		&::before {
-			position: absolute;
-			z-index: 3;
-			top: 0.8em;
-			right: 1em;
-			font-size: 0.75rem;
-			color: hsla(0, 0%, 100%, 0.4);
-			transition: opacity 0.25s;
-		}
+  &[class*="language-"] {
+    &::before {
+      position: absolute;
+      z-index: 3;
+      top: 0.8em;
+      right: 1em;
+      font-size: 0.75rem;
+      color: hsla(0, 0%, 100%, 0.4);
+      transition: opacity 0.25s;
+    }
 
-		&:hover {
-			&::before {
-				opacity: 0;
-			}
-		}
-	}
+    &:hover {
+      &::before {
+        opacity: 0;
+      }
+    }
+  }
 
-	&.language-js {
-		&::before {
-			content: "js";
-		}
-	}
+  &.language-js {
+    &::before {
+      content: "js";
+    }
+  }
 
-	&.language-abs {
-		&::before {
-			content: "abs";
-		}
-	}
+  &.language-abs {
+    &::before {
+      content: "abs";
+    }
+  }
 
-	&.language-rust {
-		&::before {
-			content: "rust";
-		}
-	}
+  &.language-rust {
+    &::before {
+      content: "rust";
+    }
+  }
 
-	&.language-rabs {
-		&::before {
-			content: "rabs";
-		}
-	}
+  &.language-rabs {
+    &::before {
+      content: "rabs";
+    }
+  }
+}
+
+.post-entry {
+  position: relative;
+  margin-bottom: var(--gap);
+  padding: var(--gap);
+  border-radius: var(--radius);
+  transition: transform 0.1s;
+  border: 1px solid var(--border);
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+.page-header {
+  svg {
+    display: inline;
+  }
+}
+
+.entry-link {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.entry-header {
+  h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.trans {
+  width: 16px;
+  height: 16px;
+}
+
+.trans-link {
+  &:hover {
+    background-color: rgba(0, 0, 0, 0);
+  }
 }

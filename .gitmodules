@@ -4,3 +4,10 @@
 [submodule "themes/papermod"]
 	path = themes/papermod
 	url = https://github.com/cydave/zola-theme-papermod
+[submodule "themes/linkita"]
+	path = themes/linkita
+	url = https://github.com/salif/linkita.git
+	branch = main
+[submodule "themes/apollo"]
+	path = themes/apollo
+	url = https://github.com/not-matthias/apollo
