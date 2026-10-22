@@ -1,6 +1,6 @@
 +++
 title = "Veröffentlichungen"
-date = "2026-10-20"
+updated = "2026-10-20"
 +++
 
 # 2026

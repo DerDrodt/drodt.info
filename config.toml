@@ -26,7 +26,8 @@ theme = "one-dark-pro"
 words = "words"
 flag = "🇺🇸"
 toc = "Table of Contents"
-pubs_title = "Scientific Publications"
+posted_on = "Posted on"
+updated_on = "Updated on"
 
 [languages.de]
 title = "Drodt.info "
@@ -39,7 +40,8 @@ welcome = "Willkommen bei Drodt.info!"
 words = "Wörter"
 flag = "🇩🇪"
 toc = "Inhaltsverzeichnis"
-pubs_title = "Wissenschaftliche Veröffentlichungen"
+posted_on = "Veröffentlicht am"
+updated_on = "Geupdated am"
 
 [extra]
 header_menu_name = "header_menu"
