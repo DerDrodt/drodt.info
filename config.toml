@@ -1,5 +1,5 @@
 base_url = "https://drodt.info"
-title = "Drodt.info"
+title = "Daniel Drodt"
 default_language = "en"
 generate_feeds = true
 compile_sass = true
