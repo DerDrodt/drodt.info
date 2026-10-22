@@ -2,11 +2,13 @@
 template = "home.html"
 +++
 
-Ich bin wissenschaftlicher Mitarbeiter an der Technischen Universität Darmstadt und arbeite auf meine Promotion hin. Mein Fokus liegt im Moment auf der formalen Verifikation von Rust, aber vielleicht wird sich das noch ändern.
+Ich bin wissenschaftlicher Mitarbeiter an der Technischen Universität Darmstadt und arbeite auf meine Promotion hin, in der Software Engineering Gruppe von Prof. Reiner Hähnle. Mein Fokus liegt auf der formalen Verifikation von Rust Programmen mittels Dynamischer Logik und dem KeY System. Ich arbeite außerdem an formaler, Trace-basierter Semantik nach dem _locally abstract, globally concrete_ (LAGC) Ansatz.
 
-Hier schreibe ich über alles, was mich interessiert. Dazu gehört Politik, Philosphie, Web-Entwicklung, Informatik und Open Source Software.
+Außerdem arbeite ich (als freier Programmierer) für [Typst](https://typst.app); genauer an deren Bibliography-Tool [Hayagriva](https://github.com/typst/hayagriva).
 
-Du kannst mir auch auf [Twitter](https://twitter.com/DerDrodtel) oder [LinkedIn](https://www.linkedin.com/in/daniel-drodt-95a960159/) folgen, falls du möchtest.
+Hier schreibe ich -- sobald ich die Zeit finde -- über alles, was mich interessiert. Dazu gehört Politik, Philosophie, Web-Entwicklung, Informatik und Open Source Software.
+
+Du kannst mir auch auf [Twitter](https://twitter.com/DerDrodtel) oder [LinkedIn](https://www.linkedin.com/in/daniel-drodt-95a960159/) folgen, falls du möchtest. Auch wenn ich selten aktiv bin.
 
 # Service
 
