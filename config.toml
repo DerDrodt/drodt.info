@@ -41,7 +41,7 @@ words = "Wörter"
 flag = "🇩🇪"
 toc = "Inhaltsverzeichnis"
 posted_on = "Veröffentlicht am"
-updated_on = "Geupdated am"
+updated_on = "Aktualisiert am"
 
 [extra]
 header_menu_name = "header_menu"
